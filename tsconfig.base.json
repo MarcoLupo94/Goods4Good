@@ -17,7 +17,8 @@
     "paths": {
       "@charity-app-production/api-interfaces": [
         "libs/api-interfaces/src/index.ts"
-      ]
+      ],
+      "@charity-app-production/material": ["libs/material/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
