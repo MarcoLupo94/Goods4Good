@@ -29,13 +29,13 @@ export class UsersController {
     return this.usersService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() user: User) {
-    return this.usersService.update(+id, user);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() user: User) {
+  //   return this.usersService.update(+id, user);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.usersService.remove(+id);
+  // }
 }
