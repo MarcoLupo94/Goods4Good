@@ -8,12 +8,7 @@ import { User } from '@charity-app-production/api-interfaces';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  hello$ = this.http.get<User>('/api/hello');
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    return this.http
-      .get<User>('/api/users')
-      .subscribe((users) => console.log(users));
-  }
+  ngOnInit() {}
 }

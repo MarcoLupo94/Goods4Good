@@ -1,8 +1,0 @@
-<div>
-  <button (click)="login()">Log in</button>
-  <button (click)="logout()">Log out</button>
-  <ul *ngIf="auth.user$ | async as user">
-    <li>{{ auth.user$ | async | json }}</li>
-    <li>{{ user.email }}</li>
-  </ul>
-</div>
