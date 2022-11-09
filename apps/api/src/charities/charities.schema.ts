@@ -1,12 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { Item } from '../items/items.schema';
+import { item } from '../items/items.schema';
 import * as mongoose from 'mongoose';
 
-export type CharityDocument = HydratedDocument<Charity>;
+export type CharityDocument = HydratedDocument<charity>;
 
 @Schema()
-export class Charity {
+export class charity {
   @Prop()
   name: string;
 
@@ -16,8 +16,8 @@ export class Charity {
   @Prop()
   img_url: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Item' })
-  shop_items: Item[];
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'item' })
+  shop_items: item[];
 }
 
-export const CharitySchema = SchemaFactory.createForClass(Charity);
+export const CharitySchema = SchemaFactory.createForClass(charity);

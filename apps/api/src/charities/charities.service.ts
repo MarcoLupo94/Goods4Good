@@ -1,26 +1,29 @@
+import { Charity } from '@charity-app-production/api-interfaces';
 import { Injectable } from '@nestjs/common';
-import { CreateCharityDto } from './dto/create-charity.dto';
-import { UpdateCharityDto } from './dto/update-charity.dto';
-
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { charity, CharityDocument } from './charities.schema';
+// TODO check security + auth
 @Injectable()
 export class CharitiesService {
-  create(createCharityDto: CreateCharityDto) {
-    return 'This action adds a new charity';
+  constructor(
+    @InjectModel(charity.name) private CharityModel: Model<CharityDocument>
+  ) {}
+
+  async create(newCharity: Charity) {
+    return await this.CharityModel.create(newCharity);
   }
 
-  findAll() {
-    return `This action returns all charities`;
+  async findAll() {
+    return await this.CharityModel.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} charity`;
+  async findOne(id: string) {
+    return await this.CharityModel.findById({ id });
   }
 
-  update(id: number, updateCharityDto: UpdateCharityDto) {
-    return `This action updates a #${id} charity`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} charity`;
+  async update(id: string, updatedCharity: Charity) {
+    await this.CharityModel.deleteOne({ id });
+    return await this.CharityModel.create(updatedCharity);
   }
 }

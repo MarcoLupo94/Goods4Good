@@ -1,26 +1,26 @@
+import { Item } from '@charity-app-production/api-interfaces';
 import { Injectable } from '@nestjs/common';
-import { CreateItemDto } from './dto/create-item.dto';
-import { UpdateItemDto } from './dto/update-item.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { item, ItemDocument } from './items.schema';
 
 @Injectable()
 export class ItemsService {
-  create(createItemDto: CreateItemDto) {
-    return 'This action adds a new item';
+  constructor(@InjectModel(item.name) private ItemModel: Model<ItemDocument>) {}
+
+  async create(newItem: Item) {
+    return await this.ItemModel.create(newItem);
   }
 
-  findAll() {
-    return `This action returns all items`;
+  async findAll() {
+    return await this.ItemModel.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} item`;
+  async findOne(_id: string) {
+    return await this.ItemModel.findById({ _id });
   }
 
-  update(id: number, updateItemDto: UpdateItemDto) {
-    return `This action updates a #${id} item`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} item`;
+  async remove(_id: string) {
+    await this.ItemModel.deleteOne({ _id });
   }
 }

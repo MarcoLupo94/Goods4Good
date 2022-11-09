@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CharitiesModule } from '../charities/charities.module';
+import { DonationsModule } from '../donations/donations.module';
 import { environment } from '../environments/environment';
 import { ItemsModule } from '../items/items.module';
 import { UsersModule } from '../users/users.module';
@@ -12,6 +13,7 @@ import { AppService } from './app.service';
     UsersModule,
     CharitiesModule,
     ItemsModule,
+    DonationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

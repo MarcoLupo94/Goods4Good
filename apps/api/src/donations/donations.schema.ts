@@ -3,10 +3,10 @@ import { HydratedDocument } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { charity } from '../charities/charities.schema';
 
-export type ItemDocument = HydratedDocument<item>;
+export type DonationDocument = HydratedDocument<donation>;
 
 @Schema()
-export class item {
+export class donation {
   @Prop()
   title: string;
 
@@ -14,13 +14,10 @@ export class item {
   description: string;
 
   @Prop()
-  img_url: string;
-
-  @Prop()
-  price: number;
+  amount: number;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'charity' })
-  charity_shop: charity;
+  charity: charity;
 }
 
-export const ItemSchema = SchemaFactory.createForClass(item);
+export const DonationSchema = SchemaFactory.createForClass(donation);
