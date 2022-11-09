@@ -1,15 +1,17 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CharitiesModule } from '../charities/charities.module';
+import { environment } from '../environments/environment';
+import { ItemsModule } from '../items/items.module';
 import { UsersModule } from '../users/users.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://marco:FwXSxrPFXpi79ORi@cluster0.whg8flp.mongodb.net/?retryWrites=true&w=majority'
-    ),
+    MongooseModule.forRoot(environment.MONGO_DB),
     UsersModule,
+    CharitiesModule,
+    ItemsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
