@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Charity } from '@charity-app-production/api-interfaces';
+import { Observable } from 'rxjs';
 import { CharitiesApiService } from '../utils/charities-api.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'charity-app-production-home',
@@ -7,9 +11,18 @@ import { CharitiesApiService } from '../utils/charities-api.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private api: CharitiesApiService) {}
+  db: Charity[] = [];
+  constructor(private api: CharitiesApiService, private http: HttpClient) {}
 
-  ngOnInit(): void {
+  getData(): Observable<Charity[]> {
+    return this.http.get<Charity[]>('/assets/fakeDB.json');
+  }
+
+  ngOnInit(): any {
+    this.getData().subscribe((data) => {
+      this.db = [...data];
+      console.log(this.db);
+    });
     // this.api.getData().subscribe((data) => console.log(data));
   }
 }
