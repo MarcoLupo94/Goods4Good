@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+  AUTH_DOMAIN: 'dev-68ahu83dvdkogdco.us.auth0.com',
+  AUTH_CLIENTID: 'xfZBZvzfQHY6Zue2FMJKvGLiDRVqomf3',
+  API_URL:
+    'https://partners.every.org/v0.2/search/pets?apiKey=098c57386f9eea4e53bd8f18590bb130',
 };
 
 /*

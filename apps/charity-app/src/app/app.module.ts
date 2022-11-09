@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent, HomeComponent],
@@ -21,11 +22,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
     StoreModule.forRoot({}, {}),
     MaterialModule,
     AuthModule.forRoot({
-      domain: 'dev-68ahu83dvdkogdco.us.auth0.com',
-      clientId: 'xfZBZvzfQHY6Zue2FMJKvGLiDRVqomf3',
+      domain: environment.AUTH_DOMAIN,
+      clientId: environment.AUTH_CLIENTID,
     }),
     RouterModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

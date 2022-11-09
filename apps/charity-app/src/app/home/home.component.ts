@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CharitiesApiService } from '../utils/charities-api.service';
 
 @Component({
   selector: 'charity-app-production-home',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private api: CharitiesApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.api.getData().subscribe((data) => console.log(data));
+  }
 }
