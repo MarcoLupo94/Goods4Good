@@ -1,5 +1,14 @@
 import { Item } from '@charity-app-production/api-interfaces';
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { ItemsService } from './items.service';
 
 @Controller('items')
@@ -8,21 +17,73 @@ export class ItemsController {
 
   @Post()
   create(@Body() item: Item) {
-    return this.itemsService.create(item);
+    try {
+      return this.itemsService.create(item);
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_MODIFIED,
+          error: 'Not Created',
+        },
+        HttpStatus.NOT_MODIFIED,
+        {
+          cause: error,
+        }
+      );
+    }
   }
 
   @Get()
   findAll() {
-    return this.itemsService.findAll();
+    try {
+      return this.itemsService.findAll();
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: 'Not FOUND',
+        },
+        HttpStatus.NOT_FOUND,
+        {
+          cause: error,
+        }
+      );
+    }
   }
 
   @Get(':id')
   findOne(@Param('id') _id: string) {
-    return this.itemsService.findOne(_id);
+    try {
+      return this.itemsService.findOne(_id);
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: 'Not found',
+        },
+        HttpStatus.NOT_FOUND,
+        {
+          cause: error,
+        }
+      );
+    }
   }
 
   @Delete(':id')
   remove(@Param('id') _id: string) {
-    return this.itemsService.remove(_id);
+    try {
+      return this.itemsService.remove(_id);
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_MODIFIED,
+          error: 'Not Deleted',
+        },
+        HttpStatus.NOT_MODIFIED,
+        {
+          cause: error,
+        }
+      );
+    }
   }
 }

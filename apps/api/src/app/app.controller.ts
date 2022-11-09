@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Next } from '@nestjs/common';
 
 import { AppService } from './app.service';
 
@@ -8,6 +8,6 @@ export class AppController {
 
   @Get('hello')
   getData() {
-    return this.appService.getData();
+    console.log('hello');
   }
 }

@@ -11,14 +11,26 @@ export class DonationsService {
   ) {}
 
   async create(newDonation: Donation) {
-    return await this.CharityModel.create(newDonation);
+    try {
+      return await this.CharityModel.create(newDonation);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async findAll() {
-    return await this.CharityModel.find({});
+    try {
+      return await this.CharityModel.find({});
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async findOne(_id: string) {
-    return await this.CharityModel.findById({ _id });
+    try {
+      return await this.CharityModel.findById({ _id });
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
