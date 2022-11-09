@@ -7,12 +7,13 @@ import { MaterialModule } from '@charity-app-production/material';
 import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { AuthModule } from '@auth0/auth0-angular';
-import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, WelcomeComponent, HomeComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
