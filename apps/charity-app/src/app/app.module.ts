@@ -14,6 +14,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { environment } from '../environments/environment';
 import { CharityCardComponent } from './charity-card/charity-card.component';
 import { CharityPageComponent } from './charity-page/charity-page.component';
+import { DonateClothesComponent } from './donate-clothes/donate-clothes.component';
+import { DonateComponent } from './donate/donate.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
+import { ShopComponent } from './shop/shop.component';
+import { DonateCashComponent } from './donate-cash/donate-cash.component';
+import { DonateCartComponent } from './donate-cart/donate-cart.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +28,12 @@ import { CharityPageComponent } from './charity-page/charity-page.component';
     HomeComponent,
     CharityCardComponent,
     CharityPageComponent,
+    DonateClothesComponent,
+    DonateComponent,
+    ThankYouComponent,
+    ShopComponent,
+    DonateCashComponent,
+    DonateCartComponent,
   ],
   imports: [
     BrowserModule,
