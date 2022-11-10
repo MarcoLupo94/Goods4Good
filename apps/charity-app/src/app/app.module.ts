@@ -12,9 +12,15 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { environment } from '../environments/environment';
+import { CharityCardComponent } from './charity-card/charity-card.component';
 
 @NgModule({
-  declarations: [AppComponent, WelcomeComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    WelcomeComponent,
+    HomeComponent,
+    CharityCardComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,

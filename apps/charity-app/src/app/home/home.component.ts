@@ -11,8 +11,13 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  db: Charity[] = [];
-  constructor(private api: CharitiesApiService, private http: HttpClient) {}
+  charities: Charity[] = [];
+  constructor(private api: CharitiesApiService) {}
 
-  ngOnInit(): any {}
+  ngOnInit(): any {
+    setTimeout(() => {
+      this.charities = this.api.db;
+      console.log(this.charities);
+    }, 50);
+  }
 }
