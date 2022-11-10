@@ -9,7 +9,9 @@
     <h3>{{ charity.name }}</h3>
     <div class="donate">
       <p>Donate!</p>
-      <button mat-button>=></button>
+      <button mat-button [routerLink]="['charity-page/', charity.id]">
+        =>
+      </button>
     </div>
   </mat-card>
 </div>

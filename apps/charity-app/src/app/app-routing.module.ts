@@ -7,6 +7,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: 'charity-page/:id',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

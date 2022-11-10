@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { environment } from '../environments/environment';
 import { CharityCardComponent } from './charity-card/charity-card.component';
+import { CharityPageComponent } from './charity-page/charity-page.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CharityCardComponent } from './charity-card/charity-card.component';
     WelcomeComponent,
     HomeComponent,
     CharityCardComponent,
+    CharityPageComponent,
   ],
   imports: [
     BrowserModule,
