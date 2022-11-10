@@ -7,6 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonateClothesComponent implements OnInit {
   constructor() {}
-
+  processFile(imn: HTMLInputElement) {}
   ngOnInit(): void {}
 }

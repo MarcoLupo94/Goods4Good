@@ -20,6 +20,7 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 import { ShopComponent } from './shop/shop.component';
 import { DonateCashComponent } from './donate-cash/donate-cash.component';
 import { DonateCartComponent } from './donate-cart/donate-cart.component';
+import { PageNavigationComponent } from './page-navigation/page-navigation.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DonateCartComponent } from './donate-cart/donate-cart.component';
     ShopComponent,
     DonateCashComponent,
     DonateCartComponent,
+    PageNavigationComponent,
   ],
   imports: [
     BrowserModule,

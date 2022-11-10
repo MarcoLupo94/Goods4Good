@@ -7,6 +7,7 @@ import { ItemsModule } from '../items/items.module';
 import { UsersModule } from '../users/users.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { S3serviceService } from './s3service/s3service.service';
 @Module({
   imports: [
     MongooseModule.forRoot(environment.MONGO_DB),
@@ -16,6 +17,6 @@ import { AppService } from './app.service';
     DonationsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, S3serviceService],
 })
 export class AppModule {}
