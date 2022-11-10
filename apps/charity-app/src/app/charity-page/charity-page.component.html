@@ -7,11 +7,13 @@
   />
   <div class="title">
     <h2>{{ charity?.name }}</h2>
-    <button mat-button>Shop</button>
+    <button mat-button (click)="navigate('donate')">Shop</button>
   </div>
   <div class="buttons">
-    <button mat-button>Donate</button>
-    <button mat-button>Donate Clothes</button>
+    <button mat-button (click)="navigate('donate')">Donate</button>
+    <button mat-button (click)="navigate('donate-clothes')">
+      Donate Clothes
+    </button>
   </div>
   <div class="description">
     <h4>Story</h4>

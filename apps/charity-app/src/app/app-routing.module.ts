@@ -15,21 +15,21 @@ const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   {
-    path: 'charity-page/:id',
-    component: CharityPageComponent,
+    path: 'charity-page',
     canActivate: [AuthGuard],
     children: [
-      { path: 'shop', component: ShopComponent },
+      { path: ':id', component: CharityPageComponent },
+      { path: ':id/shop', component: ShopComponent },
       {
-        path: 'donate',
+        path: ':id/donate',
         component: DonateComponent,
         children: [
           { path: 'cart', component: DonateCartComponent },
           { path: 'cash', component: DonateCashComponent },
         ],
       },
-      { path: 'donate-clothes', component: DonateClothesComponent },
-      { path: 'thank-you', component: ThankYouComponent },
+      { path: ':id/donate-clothes', component: DonateClothesComponent },
+      { path: ':id/thank-you', component: ThankYouComponent },
     ],
   },
 ];
