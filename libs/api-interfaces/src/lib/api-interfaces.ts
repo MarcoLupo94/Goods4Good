@@ -1,5 +1,5 @@
 export interface User {
-  id: string;
+  _id: string;
   username: string;
   password: string;
   items: Item[];
@@ -7,7 +7,7 @@ export interface User {
 }
 
 export interface Charity {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   location: string;
@@ -18,7 +18,7 @@ export interface Charity {
 }
 
 export interface Item {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   img_url: string;
@@ -26,7 +26,7 @@ export interface Item {
   charity_shop: Charity;
 }
 export interface Donation {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   amount: number;
