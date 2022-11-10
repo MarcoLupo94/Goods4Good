@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Charity } from '@charity-app-production/api-interfaces';
 
 @Component({
   selector: 'charity-app-production-charity-card',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharityCardComponent implements OnInit {
   constructor() {}
-
+  @Input()
+  charity!: Charity;
   ngOnInit(): void {}
 }

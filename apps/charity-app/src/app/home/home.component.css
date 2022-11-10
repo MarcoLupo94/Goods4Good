@@ -16,8 +16,17 @@
 }
 .charities {
   height  : 70%;
-
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 2em;
+}
+.banners {
+  height: 100%;
+  width: 100%;
+  overflow-y:auto;
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
+/* TODO transform to grid when bigger than phone screen */

@@ -9,9 +9,10 @@
   <mat-divider></mat-divider>
   <div class="charities">
     <h3>CHarities of the Day</h3>
-    <mat-list>
+    <mat-list class="banners">
       <charity-app-production-charity-card
         *ngFor="let charity of charities.slice(-5)"
+        [charity]="charity"
       ></charity-app-production-charity-card>
     </mat-list>
   </div>
