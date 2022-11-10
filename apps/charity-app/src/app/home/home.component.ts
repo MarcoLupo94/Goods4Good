@@ -4,6 +4,7 @@ import { Charity } from '@charity-app-production/api-interfaces';
 import { Observable } from 'rxjs';
 import { CharitiesApiService } from '../utils/charities-api.service';
 import { map } from 'rxjs/operators';
+import { CurrentUserService } from '../utils/current-user.service';
 
 @Component({
   selector: 'charity-app-production-home',
@@ -12,7 +13,10 @@ import { map } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   charities: Charity[] = [];
-  constructor(private api: CharitiesApiService) {}
+  constructor(
+    private api: CharitiesApiService,
+    private currentUser: CurrentUserService
+  ) {}
 
   ngOnInit(): any {
     setTimeout(() => {

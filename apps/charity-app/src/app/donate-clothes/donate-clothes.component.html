@@ -2,23 +2,29 @@
   <charity-app-production-page-navigation></charity-app-production-page-navigation>
   <div class="container">
     <p>Item informations</p>
-    <form #f="ngForm" class="form" (ngSubmit)="processFile(imageInput)">
+    <form #f="ngForm" class="form" (ngSubmit)="handleSubmit(f, imageInput)">
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Item title</mat-label>
-          <input matInput placeholder="name" />
+          <input matInput placeholder="name" ngModel name="title" />
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="outline">
           <mat-label>£ Price</mat-label>
-          <input matInput type="number" placeholder="0.00" />
+          <input
+            matInput
+            type="number"
+            placeholder="0.00"
+            ngModel
+            name="price"
+          />
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Item size</mat-label>
-          <input matInput placeholder="S/M/L " />
+          <input matInput placeholder="S/M/L" ngModel name="size" />
         </mat-form-field>
       </p>
 
@@ -31,7 +37,12 @@
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Item informations</mat-label>
-          <textarea matInput placeholder="Description..."></textarea>
+          <textarea
+            matInput
+            placeholder="Description..."
+            ngModel
+            name="description"
+          ></textarea>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </p>

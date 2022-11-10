@@ -20,10 +20,12 @@ export interface Charity {
 export interface Item {
   _id: string;
   title: string;
+  size: string;
   description: string;
   img_url: string;
   price: number;
-  charity_shop: Charity;
+  charity_shop: string;
+  user_owner: string;
 }
 export interface Donation {
   _id: string;
