@@ -1,6 +1,14 @@
 .container {
-  position:relative;
   left: 25%;
   width: 60%;
   height: 25%;
+
+}
+
+.card {
+  position: relative;
+  left: 0.5em;
+  bottom: 5em;
+  width: 80%;
+  height: 50%;
 }

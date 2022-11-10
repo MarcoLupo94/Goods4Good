@@ -10,5 +10,6 @@ export class CharityCardComponent implements OnInit {
   constructor() {}
   @Input()
   charity!: Charity;
+
   ngOnInit(): void {}
 }
