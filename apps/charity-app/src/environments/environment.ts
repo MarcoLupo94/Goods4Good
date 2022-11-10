@@ -7,10 +7,10 @@ export const environment = {
   AUTH_DOMAIN: 'dev-68ahu83dvdkogdco.us.auth0.com',
   AUTH_CLIENTID: 'xfZBZvzfQHY6Zue2FMJKvGLiDRVqomf3',
   API_URL:
-    'https://partners.every.org/v0.2/search/pets?apiKey=098c57386f9eea4e53bd8f18590bb130',
+    'https://partners.every.org/v0.2/search/pets?apiKey:098c57386f9eea4e53bd8f18590bb130',
 };
 
-/*
+/*aaa
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
  *

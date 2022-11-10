@@ -10,7 +10,10 @@ export interface Charity {
   id: string;
   name: string;
   description: string;
-  img_url: string;
+  location: string;
+  coverImageUrl: string;
+  profileUrl: string;
+  matchedTerms: string[];
   shop_items: Item[];
 }
 

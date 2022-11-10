@@ -14,7 +14,16 @@ export class charity {
   description: string;
 
   @Prop()
-  img_url: string;
+  coverImageUrl: string;
+
+  @Prop()
+  profileUrl: string;
+
+  @Prop()
+  location: string;
+
+  @Prop()
+  matchedTerms: string[];
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'item' })
   shop_items: item[];

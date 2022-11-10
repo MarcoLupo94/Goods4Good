@@ -7,8 +7,9 @@ tmp
 
 # dependencies
 node_modules
-
-# IDEs and editors
+#env
+**/src/environments/environment.prod.ts
+**/src/environments/environment.ts
 /.idea
 .project
 .classpath
