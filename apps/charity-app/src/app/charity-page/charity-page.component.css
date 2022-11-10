@@ -1,0 +1,38 @@
+.body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color:white
+}
+/* TODO CHANGE BODY OF ALL APP TO DECREASE ON BIGGER SCREEN AND CENTER 60%? */
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em;
+  padding: 1em;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 1em;
+}
+.buttons > button {
+  background-color: #1AB75D;
+  width: 40%;
+
+
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  margin: 2em;
+  margin-top : 0em;
+  padding: 1em;
+  padding-top : 0em;
+
+}

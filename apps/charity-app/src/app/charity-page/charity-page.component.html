@@ -1,1 +1,20 @@
-<p>charity-page works!</p>
+<div class="body">
+  <img
+    class="banner"
+    mat-card-image
+    src="{{ charity?.coverImageUrl }}"
+    alt="Charity? Banner"
+  />
+  <div class="title">
+    <h2>{{ charity?.name }}</h2>
+    <button mat-button>Shop</button>
+  </div>
+  <div class="buttons">
+    <button mat-button>Donate</button>
+    <button mat-button>Donate Clothes</button>
+  </div>
+  <div class="description">
+    <h4>Story</h4>
+    <p>{{ charity?.description }}</p>
+  </div>
+</div>
