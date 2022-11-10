@@ -23,7 +23,7 @@ export class charity {
   location: string;
 
   @Prop()
-  matchedTerms: string[];
+  tags: string[];
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'item' })
   shop_items: item[];

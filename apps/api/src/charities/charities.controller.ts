@@ -16,7 +16,8 @@ export class CharitiesController {
   constructor(private readonly charitiesService: CharitiesService) {}
 
   @Post()
-  async create(@Body() charity: Charity) {
+  async create(@Body() charity: Charity | Charity[]) {
+    console.log(charity);
     try {
       return this.charitiesService.create(charity);
     } catch (error) {

@@ -13,7 +13,7 @@ export interface Charity {
   location: string;
   coverImageUrl: string;
   profileUrl: string;
-  matchedTerms: string[];
+  tags: string[];
   shop_items: Item[];
 }
 

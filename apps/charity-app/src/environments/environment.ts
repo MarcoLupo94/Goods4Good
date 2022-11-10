@@ -7,7 +7,8 @@ export const environment = {
   AUTH_DOMAIN: 'dev-68ahu83dvdkogdco.us.auth0.com',
   AUTH_CLIENTID: 'xfZBZvzfQHY6Zue2FMJKvGLiDRVqomf3',
   API_URL:
-    'https://partners.every.org/v0.2/search/pets?apiKey:098c57386f9eea4e53bd8f18590bb130',
+    'https://partners.every.org/v0.2/search/pets?apiKey:be7e0eb827544ee8dfd425d54a2b5217',
+  API_DB: 'http://localhost:3333/api/',
 };
 
 /*aaa

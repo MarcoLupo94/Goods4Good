@@ -10,7 +10,7 @@ export class CharitiesService {
     @InjectModel(charity.name) private CharityModel: Model<CharityDocument>
   ) {}
 
-  async create(newCharity: Charity) {
+  async create(newCharity: Charity | Charity[]) {
     return await this.CharityModel.create(newCharity);
   }
 

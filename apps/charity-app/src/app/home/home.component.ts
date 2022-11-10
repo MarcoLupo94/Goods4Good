@@ -14,15 +14,5 @@ export class HomeComponent implements OnInit {
   db: Charity[] = [];
   constructor(private api: CharitiesApiService, private http: HttpClient) {}
 
-  getData(): Observable<Charity[]> {
-    return this.http.get<Charity[]>('/assets/fakeDB.json');
-  }
-
-  ngOnInit(): any {
-    this.getData().subscribe((data) => {
-      this.db = [...data];
-      console.log(this.db);
-    });
-    // this.api.getData().subscribe((data) => console.log(data));
-  }
+  ngOnInit(): any {}
 }
