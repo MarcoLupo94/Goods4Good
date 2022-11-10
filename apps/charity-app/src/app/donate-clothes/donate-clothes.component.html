@@ -2,7 +2,7 @@
   <charity-app-production-page-navigation></charity-app-production-page-navigation>
   <div class="container">
     <p>Item informations</p>
-    <form class="form">
+    <form #f="ngForm" class="form" (ngSubmit)="processFile(imageInput)">
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Item title</mat-label>
@@ -24,11 +24,7 @@
 
       <label class="image-upload-container btn btn-bwm">
         <span>Select Image</span>
-        <input
-          #imageInput
-          type="file"
-          accept="image/*"
-          (change)="processFile(imageInput)"
+        <input #imageInput type="file" accept="image/*" />
         />
       </label>
 
@@ -39,6 +35,7 @@
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </p>
+      <button type="submit">submit</button>
     </form>
   </div>
 </div>

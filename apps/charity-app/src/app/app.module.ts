@@ -21,7 +21,7 @@ import { ShopComponent } from './shop/shop.component';
 import { DonateCashComponent } from './donate-cash/donate-cash.component';
 import { DonateCartComponent } from './donate-cart/donate-cart.component';
 import { PageNavigationComponent } from './page-navigation/page-navigation.component';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +50,7 @@ import { PageNavigationComponent } from './page-navigation/page-navigation.compo
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

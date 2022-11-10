@@ -24,7 +24,8 @@ export class AppController {
   @Post('file')
   @UseInterceptors(FileInterceptor('file', {}))
   async uploadFile(@UploadedFile() file) {
-    console.log('FILE', file);
-    return await this.service.upload(file);
+    console.log(file);
+    const fileUp = await this.service.upload(file);
+    return fileUp;
   }
 }
