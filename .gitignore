@@ -8,8 +8,12 @@ tmp
 # dependencies
 node_modules
 #env
-**/src/environments/environment.prod.ts
-**/src/environments/environment.ts
+# **/src/environments/environment.prod.ts
+# **/src/environments/environment.ts
+apps/api/src/environments/environment.ts
+apps/charity-app/src/environments/environment.ts
+
+
 /.idea
 .project
 .classpath
