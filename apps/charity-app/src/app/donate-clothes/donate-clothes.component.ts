@@ -28,13 +28,12 @@ export class DonateClothesComponent {
     charity_shop: '',
     user_owner: '',
   };
-  currentUser: User | undefined;
 
   handleSubmit(form: NgForm, image: any) {
     this.item = { ...form.value }; //GET FORM DATA
     this.processFile(image); //UPLOAD IMAGE AND SAVE URL
     this.item.charity_shop = this.route.snapshot.params['id']; //ADD charity reference ID
-    console.log(this.auth.getUser);
+    // console.log(this.auth.getUser);
     console.log(this.item);
   }
   processFile(image: any) {
