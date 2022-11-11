@@ -1,0 +1,17 @@
+.button {
+  color: var(--primary);
+  transform: scale(1.5);
+ }
+ .body {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  color: var(--primary-text);
+  padding: 1em;
+  margin-left: 1em;
+ }
+ .body > h2 {
+  font-size: 2em;
+  font-weight: 300;
+
+ }

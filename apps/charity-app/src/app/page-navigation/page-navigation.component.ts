@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'charity-app-production-page-navigation',
   templateUrl: './page-navigation.component.html',
   styleUrls: ['./page-navigation.component.css'],
 })
-export class PageNavigationComponent implements OnInit {
-  constructor() {}
+export class PageNavigationComponent {
+  constructor(private location: Location) {}
+  pageName = 'Page Name';
 
-  ngOnInit(): void {}
+  backClicked() {
+    this.location.back();
+  }
 }
