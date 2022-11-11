@@ -1,0 +1,41 @@
+.donation {
+  width: 70%;
+  height: 20vh;
+}
+input {
+  position: relative;
+  font-size: 3em;
+  left: 25%;
+}
+
+.field{
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+
+/* NUMBER INPUT REMOVE ARROWS */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* MAT FORM CHANGED COLOR */
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--primary)!important;
+}
+::ng-deep .mat-input-element {
+  caret-color: white!important;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color:white!important;
+}
+
