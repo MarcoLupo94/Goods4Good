@@ -6,10 +6,12 @@
     alt="Charity Banner"
   />
   <mat-card class="card">
-    <h3>{{ charity.name }}</h3>
+    <h5>{{ charity.name }}</h5>
     <div class="donate">
-      <p>Donate!</p>
-      <button mat-button (click)="navigate()">=></button>
+      <h6>Donate!</h6>
+      <button class="arrow" mat-button (click)="navigate()">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
     </div>
   </mat-card>
 </div>

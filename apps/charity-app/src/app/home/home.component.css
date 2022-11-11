@@ -1,40 +1,53 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
   height: 100%;
   width: 100%;
-  color: white;;
+  color: white;
+  padding: 1em ;
+
 }
 .logo-button {
   display: flex;
 }
 .user-infos {
   height  : 20%;
+  width: 80%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  padding: 0.5em
+
 }
 .charities {
   height  : 70%;
-  display: flex;
-  flex-direction: column;
-  gap: 3em;
-  padding: 2em;
+  padding: 2em
+
+}
+h2 {
+  margin-bottom: 2em;
+  margin-top: 2em;
+
 }
 .banners {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  margin: 2em;
-  padding: 1em;
+  margin-left: 3em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: center
+
+
 }
 .hero-profile {
-  color:#1AB75D;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 0.5em;
+  color: var(--primary);
+  padding: 1.5em;
+  background-color : var(--secondary-background );
 }
 
+.search {
+  color : var(--primary);
+  background-color: var(--button-background);
+  transform : scale(0.5)
+}
+.search:hover {
+  color : white;
+  background-color:var(--primary);
+}
 /* TODO transform to grid when bigger than phone screen */
