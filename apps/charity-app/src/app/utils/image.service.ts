@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,6 @@ export class ImageService {
     const formData = new FormData();
 
     formData.append('file', image);
-    return this.http.post('http://localhost:3333/api/file', formData);
+    return this.http.post(environment.API_DB + 'file', formData);
   }
 }

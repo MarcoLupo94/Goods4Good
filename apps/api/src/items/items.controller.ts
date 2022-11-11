@@ -33,28 +33,10 @@ export class ItemsController {
     }
   }
 
-  @Get()
-  findAll() {
-    try {
-      return this.itemsService.findAll();
-    } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_FOUND,
-          error: 'Not FOUND',
-        },
-        HttpStatus.NOT_FOUND,
-        {
-          cause: error,
-        }
-      );
-    }
-  }
-
   @Get(':id')
-  findOne(@Param('id') _id: string) {
+  find(@Param('id') _id: string) {
     try {
-      return this.itemsService.findOne(_id);
+      return this.itemsService.find(_id);
     } catch (error) {
       throw new HttpException(
         {
@@ -62,24 +44,6 @@ export class ItemsController {
           error: 'Not found',
         },
         HttpStatus.NOT_FOUND,
-        {
-          cause: error,
-        }
-      );
-    }
-  }
-
-  @Delete(':id')
-  remove(@Param('id') _id: string) {
-    try {
-      return this.itemsService.remove(_id);
-    } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_MODIFIED,
-          error: 'Not Deleted',
-        },
-        HttpStatus.NOT_MODIFIED,
         {
           cause: error,
         }

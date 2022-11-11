@@ -12,15 +12,7 @@ export class ItemsService {
     return await this.ItemModel.create(newItem);
   }
 
-  async findAll() {
-    return await this.ItemModel.find({});
-  }
-
-  async findOne(_id: string) {
+  async find(_id: string) {
     return await this.ItemModel.findById({ _id });
-  }
-
-  async remove(_id: string) {
-    await this.ItemModel.deleteOne({ _id });
   }
 }

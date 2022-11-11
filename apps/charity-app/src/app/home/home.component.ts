@@ -1,9 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Charity } from '@charity-app-production/api-interfaces';
-import { Observable } from 'rxjs';
 import { CharitiesApiService } from '../utils/charities-api.service';
-import { map } from 'rxjs/operators';
 import { CurrentUserService } from '../utils/current-user.service';
 
 @Component({
@@ -19,6 +16,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): any {
+    this.currentUser.setUser();
     setTimeout(() => {
       this.charities = this.api.db;
       console.log(this.charities);

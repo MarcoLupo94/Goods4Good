@@ -17,10 +17,6 @@ export class AppController {
     private service: S3serviceService
   ) {}
 
-  @Get('hello')
-  getData() {
-    console.log('hello');
-  }
   @Post('file')
   @UseInterceptors(FileInterceptor('file', {}))
   async uploadFile(@UploadedFile() file) {
