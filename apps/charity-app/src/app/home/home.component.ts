@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Charity } from '@charity-app-production/api-interfaces';
+import { Charity, User } from '@charity-app-production/api-interfaces';
 import { CharitiesApiService } from '../utils/charities-api.service';
 import { CurrentUserService } from '../utils/current-user.service';
 
@@ -10,16 +10,18 @@ import { CurrentUserService } from '../utils/current-user.service';
 })
 export class HomeComponent implements OnInit {
   charities: Charity[] = [];
+  user!: User;
   constructor(
     private api: CharitiesApiService,
-    private currentUser: CurrentUserService
+    private userService: CurrentUserService
   ) {}
 
   ngOnInit(): any {
-    this.currentUser.setUser();
+    this.userService.setUser();
     setTimeout(() => {
       this.charities = this.api.db;
       console.log(this.charities);
+      this.user = this.userService.currentUser;
     }, 50);
   }
 }

@@ -2,9 +2,14 @@
   <div class="user-infos">
     <div class="logo-button">
       <h1>CHARITYAPP</h1>
-      <button mat-button>S</button>
+      <button mat-button>
+        <mat-icon fontIcon="search"></mat-icon>
+      </button>
     </div>
-    <mat-card>HERO CARD</mat-card>
+    <mat-card class="hero-profile">
+      <mat-icon fontIcon="account_circle"></mat-icon>
+      <h3>Hello {{ user.username }} !</h3>
+    </mat-card>
   </div>
   <mat-divider></mat-divider>
   <div class="charities">
