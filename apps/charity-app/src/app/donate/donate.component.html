@@ -1,1 +1,8 @@
-<p>donate works!</p>
+<div class="body">
+  <charity-app-production-page-navigation>
+  </charity-app-production-page-navigation>
+  <form #form="ngForm" (ngSubmit)="handleSubmit()">
+    <router-outlet name="secondary"></router-outlet>
+    <button type="submit" mat-button>Donate</button>
+  </form>
+</div>

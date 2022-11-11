@@ -24,8 +24,8 @@ const routes: Routes = [
         path: ':id/donate',
         component: DonateComponent,
         children: [
-          { path: 'cart', component: DonateCartComponent },
-          { path: 'cash', component: DonateCashComponent },
+          { path: 'cart', component: DonateCartComponent, outlet: 'secondary' },
+          { path: 'cash', component: DonateCashComponent, outlet: 'secondary' },
         ],
       },
       { path: ':id/donate-clothes', component: DonateClothesComponent },

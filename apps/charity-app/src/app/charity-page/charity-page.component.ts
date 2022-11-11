@@ -20,6 +20,11 @@ export class CharityPageComponent implements OnInit {
   navigate(adress: string) {
     this.router.navigate(['charity-page', this.id, adress]);
   }
+  navigateSecondary(adress: string) {
+    this.router.navigateByUrl(
+      `charity-page/636cd12f76e5a40615ebec0c/donate/(secondary:${adress})`
+    );
+  }
   loadCharity() {
     this.id = this.route.snapshot.params['id'];
     this.charity = this.api.db.find((item) => item._id === this.id);

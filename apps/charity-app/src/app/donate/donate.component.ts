@@ -8,5 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DonateComponent implements OnInit {
   constructor() {}
 
+  handleSubmit() {}
+
   ngOnInit(): void {}
 }
