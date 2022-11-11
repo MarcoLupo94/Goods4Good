@@ -25,7 +25,7 @@
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Item size</mat-label>
-          <input matInput placeholder="S/M/L" ngModel name="size" />
+          <input matInput placeholder="S/M/L" ngModel name="size" required />
         </mat-form-field>
       </p>
 
@@ -65,7 +65,13 @@
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </p>
-      <button type="submit">submit</button>
+      <button
+        mat-button
+        type="submit"
+        [disabled]="!f.valid || selectedFile.status !== 'ok'"
+      >
+        submit
+      </button>
     </form>
   </div>
 </div>

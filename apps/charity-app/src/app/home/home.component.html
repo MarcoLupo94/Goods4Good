@@ -1,7 +1,7 @@
 <div class="container">
   <div class="user-infos">
     <div class="logo-button">
-      <h1>CHARITYAPP</h1>
+      <h1>GOODS 4 GOOD</h1>
       <button mat-button>
         <mat-icon fontIcon="search"></mat-icon>
       </button>
@@ -13,10 +13,10 @@
   </div>
   <mat-divider></mat-divider>
   <div class="charities">
-    <h3>CHarities of the Day</h3>
+    <h3>Good causes of the Day</h3>
     <mat-list class="banners">
       <charity-app-production-charity-card
-        *ngFor="let charity of charities.slice(-5)"
+        *ngFor="let charity of charities.slice(0, 5)"
         [charity]="charity"
       ></charity-app-production-charity-card>
     </mat-list>

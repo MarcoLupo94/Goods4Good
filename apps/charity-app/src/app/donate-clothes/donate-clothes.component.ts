@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../utils/image.service';
 import { NgForm } from '@angular/forms';
 import { Item } from '@charity-app-production/api-interfaces';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CurrentUserService } from '../utils/current-user.service';
 import { ItemsService } from '../utils/items.service';
 class ImageSnippet {
@@ -20,7 +20,8 @@ export class DonateClothesComponent {
     private imageService: ImageService,
     private route: ActivatedRoute,
     private user: CurrentUserService,
-    private itemService: ItemsService
+    private itemService: ItemsService,
+    private router: Router
   ) {}
   selectedFile!: ImageSnippet;
   item: Item = {
@@ -45,6 +46,12 @@ export class DonateClothesComponent {
     console.log(this.item);
     this.itemService.postItem(this.item).subscribe();
     form.resetForm();
+
+    this.router.navigate([
+      '/charity-page',
+      this.item.charity_shop,
+      'thank-you',
+    ]);
   }
 
   processFile(image: any) {

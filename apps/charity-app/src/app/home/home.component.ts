@@ -11,6 +11,8 @@ import { CurrentUserService } from '../utils/current-user.service';
 export class HomeComponent implements OnInit {
   charities: Charity[] = [];
   user!: User;
+  randomizedCharities: Charity[] = [];
+
   constructor(
     private api: CharitiesApiService,
     private userService: CurrentUserService
@@ -19,7 +21,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): any {
     this.userService.setUser();
     setTimeout(() => {
-      this.charities = this.api.db;
+      this.charities = [...this.api.db].sort(() => 0.5 - Math.random());
+
       console.log(this.charities);
       this.user = this.userService.currentUser;
     }, 50);
