@@ -1,12 +1,25 @@
-<mat-form-field class="field" appearance="outline">
-  <mat-label class="donation">£ Donation</mat-label>
-  <input
-    class="donation"
-    matInput
-    type="number"
-    placeholder="0.00"
-    ngModel
-    name="Donation"
-    required
-  />
-</mat-form-field>
+<form class="container" #form="ngForm" (ngSubmit)="handleSubmit()">
+  <mat-form-field class="donation" appearance="outline">
+    <mat-label class="donation">£ Donation</mat-label>
+    <input
+      [(ngModel)]="value"
+      class="donation"
+      matInput
+      type="number"
+      placeholder="0.00"
+      ngModel
+      name="Donation"
+      required
+    />
+  </mat-form-field>
+  <mat-chip-list class="chips">
+    <mat-chip (click)="setValue(5)">£5</mat-chip>
+    <mat-chip (click)="setValue(15)">£15</mat-chip>
+    <mat-chip (click)="setValue(25)">£25</mat-chip>
+    <mat-chip (click)="setValue(50)">£50</mat-chip>
+    <mat-chip (click)="setValue(100)">£100</mat-chip>
+  </mat-chip-list>
+  <button class="button" mat-button type="submit" [disabled]="!form.valid">
+    Donate
+  </button>
+</form>

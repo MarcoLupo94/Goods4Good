@@ -1,11 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  margin: 1em;
+  padding: 1em;
+  height: 100%;
+  gap: 6em;
+
+}
 .donation {
   width: 70%;
   height: 20vh;
+}
+.button {
+  background-color: var(--primary);
+  width: 60%;
 }
 input {
   position: relative;
   font-size: 3em;
   left: 25%;
+  color: var(--primary-text);
 }
 
 .field{
@@ -16,6 +32,14 @@ input {
 }
 
 
+.chips *{
+  background-color: var(--primary);
+  color: var(--primary-background);
+}
+.chips *:hover{
+  background-color: var(--primary-background);
+  color: var(--primary);
+}
 /* NUMBER INPUT REMOVE ARROWS */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

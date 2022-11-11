@@ -5,8 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './donate.component.html',
   styleUrls: ['./donate.component.css'],
 })
-export class DonateComponent {
-  constructor() {}
-
-  handleSubmit() {}
-}
+export class DonateComponent {}

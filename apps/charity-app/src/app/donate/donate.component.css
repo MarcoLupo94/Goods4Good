@@ -1,12 +1,8 @@
-.button {
-  background-color: var(--primary);
-  width: 60%;
-}
 
-.form {
-  margin: 1em;
-  padding: 1em;
+.body{
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
 }

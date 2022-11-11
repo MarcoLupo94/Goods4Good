@@ -22,7 +22,7 @@ export class CharityPageComponent implements OnInit {
   }
   navigateSecondary(adress: string) {
     this.router.navigateByUrl(
-      `charity-page/636cd12f76e5a40615ebec0c/donate/(secondary:${adress})`
+      `charity-page/${this.id}/donate/(secondary:${adress})`
     );
   }
   loadCharity() {
