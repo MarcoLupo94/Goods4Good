@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../utils/image.service';
 import { NgForm } from '@angular/forms';
-import { Item } from 'libs/api-interfaces/src/lib/api-interfaces';
+import { Item } from '@charity-app-production/api-interfaces';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService, User } from '@auth0/auth0-angular';
 import { CurrentUserService } from '../utils/current-user.service';
 import { ItemsService } from '../utils/items.service';
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
+  pending = false;
+  status = 'init';
 }
 @Component({
   selector: 'charity-app-production-donate-clothes',
@@ -21,7 +22,7 @@ export class DonateClothesComponent {
     private user: CurrentUserService,
     private itemService: ItemsService
   ) {}
-  selectedFile: ImageSnippet | undefined;
+  selectedFile!: ImageSnippet;
   item: Item = {
     _id: '',
     title: '',
@@ -43,24 +44,41 @@ export class DonateClothesComponent {
     };
     console.log(this.item);
     this.itemService.postItem(this.item).subscribe();
+    form.resetForm();
   }
+
   processFile(image: any) {
     const file: File = image.files[0];
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
       this.selectedFile = new ImageSnippet(event.target.result, file);
-      this.imageService
-        .uploadImage(this.selectedFile.file)
-        .subscribe((data) => {
-          for (const [key, value] of Object.entries(data)) {
-            if (key === 'Location') {
-              this.imgUrl = value;
+      try {
+        this.imageService
+          .uploadImage(this.selectedFile.file)
+          .subscribe((data) => {
+            this.onSuccess();
+            for (const [key, value] of Object.entries(data)) {
+              if (key === 'Location') {
+                this.imgUrl = value;
+              }
             }
-          }
-        });
+          });
+      } catch (err) {
+        console.log(err);
+        this.onError();
+      }
     });
 
     reader.readAsDataURL(file);
+  }
+  private onSuccess() {
+    this.selectedFile.pending = false;
+    this.selectedFile.status = 'ok';
+  }
+
+  private onError() {
+    this.selectedFile.pending = false;
+    this.selectedFile.status = 'fail';
   }
 }
 
