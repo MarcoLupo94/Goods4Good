@@ -7,7 +7,10 @@
   color:white
 }
 /* TODO CHANGE BODY OF ALL APP TO DECREASE ON BIGGER SCREEN AND CENTER 60%? */
-
+.shop {
+  color : var(--primary);
+  background-color: var(--button-background);
+}
 .title {
   display: flex;
   justify-content: space-between;

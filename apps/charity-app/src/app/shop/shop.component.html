@@ -1,10 +1,18 @@
 <div class="container" *ngIf="charity">
   <charity-app-production-page-navigation pageName="Shop">
   </charity-app-production-page-navigation>
+  <button (click)="navigate()" class="cart" mat-button *ngIf="cart">
+    <mat-icon
+      fontIcon="shopping_cart"
+      matBadge="{{ cart }}"
+      matBadgeColor="warn"
+    ></mat-icon>
+  </button>
 </div>
 
 <div class="items" *ngIf="charity">
   <charity-app-production-shop-item
+    (click)="navigate()"
     class="component"
     [item]="item"
     [charity]="charity"

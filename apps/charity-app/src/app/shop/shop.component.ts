@@ -13,6 +13,7 @@ export class ShopComponent implements OnInit {
   charity: Charity | undefined;
   id = '';
   items: Item[] = [];
+  cart = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +23,10 @@ export class ShopComponent implements OnInit {
   loadCharity() {
     this.id = this.route.snapshot.params['id'];
     this.charity = this.api.db.find((item) => item._id === this.id);
+  }
+  navigate() {
+    console.log(1);
+    this.cart++;
   }
   ngOnInit(): void {
     this.loadCharity();

@@ -1,8 +1,9 @@
 .container {
   height  : 20%;
-  display: grid;
+  display: flex;
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  justify-content: space-between;
+  margin: 2em;
 }
 .items{
   margin: 1em;
@@ -15,4 +16,8 @@
 }
 .component {
   width: 80%;
+}
+.cart {
+  color : var(--primary);
+  background-color: var(--button-background);
 }

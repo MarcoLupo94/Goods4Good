@@ -7,7 +7,9 @@
   />
   <div class="title">
     <h2>{{ charity?.name }}</h2>
-    <button mat-button (click)="navigate('shop')">Shop</button>
+    <button (click)="navigate('shop')" class="shop" mat-button>
+      <mat-icon fontIcon="shopping_cart"></mat-icon>
+    </button>
   </div>
   <div class="buttons">
     <button mat-button (click)="navigateSecondary('cash')">Donate</button>

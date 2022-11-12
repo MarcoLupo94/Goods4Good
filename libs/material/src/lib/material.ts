@@ -24,6 +24,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   exports: [
@@ -52,6 +53,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatTooltipModule,
     MatStepperModule,
     MatChipsModule,
+    MatBadgeModule,
   ],
 })
 export class MaterialModule {}
