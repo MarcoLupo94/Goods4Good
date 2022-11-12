@@ -20,4 +20,5 @@
 .cart {
   color : var(--primary);
   background-color: var(--button-background);
+  transform: scale(1.3);
 }

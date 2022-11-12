@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'charity-app-production-thank-you',
@@ -7,8 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./thank-you.component.css'],
 })
 export class ThankYouComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private location: Location) {}
   navigate() {
     this.router.navigate(['home']);
+  }
+  backClicked() {
+    this.location.back();
   }
 }
