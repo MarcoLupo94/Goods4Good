@@ -25,8 +25,9 @@ export class ShopComponent implements OnInit {
   }
   ngOnInit(): void {
     this.loadCharity();
-    this.itemService
-      .getShopItems(this.id)
-      .subscribe((data) => (this.items = [...data]));
+    this.itemService.getShopItems(this.id).subscribe((data) => {
+      this.items = [...data];
+      console.log(this.items);
+    });
   }
 }

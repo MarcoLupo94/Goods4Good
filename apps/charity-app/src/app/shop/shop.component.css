@@ -1,0 +1,15 @@
+.container {
+  height  : 20%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.items{
+  margin: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: center;
+  gap: 1.5em;
+  height: 80vh;
+
+}

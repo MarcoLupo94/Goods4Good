@@ -1,1 +1,16 @@
-<p>shop-item works!</p>
+<div class="container">
+  <div class="hero">
+    <img src="{{ item.img_url }}" alt="itemImage" class="image" />
+    <button class="button" mat-button hidden>Add to cart</button>
+  </div>
+  <div class="infos">
+    <div class="main">
+      <p>{{ item.size }}</p>
+      <h4>{{ item.price }}</h4>
+    </div>
+    <div class="infos-detail">
+      <h5>{{ item.title }}</h5>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+</div>

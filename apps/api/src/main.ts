@@ -14,6 +14,7 @@ const configSwagger = (app) => {
   SwaggerModule.setup('api', app, document);
   // swagger code
 };
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';

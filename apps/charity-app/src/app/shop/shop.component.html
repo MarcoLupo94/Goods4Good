@@ -1,12 +1,12 @@
-<charity-app-production-page-navigation pageName="Shop">
-</charity-app-production-page-navigation>
 <div class="container" *ngIf="charity">
-  <mat-list>
-    <mat-list-item *ngFor="let item of items">
-      <charity-app-production-shop-item
-        [item]="item"
-        [charity]="charity"
-      ></charity-app-production-shop-item>
-    </mat-list-item>
-  </mat-list>
+  <charity-app-production-page-navigation pageName="Shop">
+  </charity-app-production-page-navigation>
+</div>
+
+<div class="items" *ngIf="charity">
+  <charity-app-production-shop-item
+    [item]="item"
+    [charity]="charity"
+    *ngFor="let item of items"
+  ></charity-app-production-shop-item>
 </div>

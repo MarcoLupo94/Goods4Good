@@ -14,6 +14,8 @@ export class ItemsService {
     return this.http.post<Item>(environment.API_DB + 'items', item);
   }
   getShopItems(charityId: string): Observable<Item[]> {
-    return this.http.get<Item[]>(environment.API_DB + 'items' + charityId);
+    return this.http.get<Item[]>(
+      environment.API_DB + 'items' + '/' + charityId
+    );
   }
 }
