@@ -1,6 +1,5 @@
 .container {
   height: 100%;
-  width: 100%;
   color: white;
   padding: 1em ;
 
@@ -24,7 +23,7 @@
 }
 h2 {
   margin-bottom: 2em;
-  margin-top: 2em;
+  margin-top: 4em;
 
 }
 .banners {
@@ -33,7 +32,6 @@ h2 {
   align-items: center;
   justify-content: center;
   gap: 2em;
-  margin-left : -2em;
 }
 .hero-profile {
   max-width: 400px;
