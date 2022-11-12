@@ -13,6 +13,8 @@ export class ItemsService {
   }
 
   async find(_id: string) {
-    return await this.ItemModel.findById({ _id });
+    return await this.ItemModel.findById({
+      charity_shop: '636cd12f76e5a40615ebec0b',
+    });
   }
 }

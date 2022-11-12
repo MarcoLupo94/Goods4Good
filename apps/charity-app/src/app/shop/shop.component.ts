@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Charity, Item } from '@charity-app-production/api-interfaces';
+import { CharitiesApiService } from '../utils/charities-api.service';
+import { ItemsService } from '../utils/items.service';
 
 @Component({
   selector: 'charity-app-production-shop',
@@ -6,7 +10,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shop.component.css'],
 })
 export class ShopComponent implements OnInit {
-  constructor() {}
+  charity: Charity | undefined;
+  id = '';
+  items: Item[] = [];
 
-  ngOnInit(): void {}
+  constructor(
+    private route: ActivatedRoute,
+    private api: CharitiesApiService,
+    private itemService: ItemsService
+  ) {}
+  loadCharity() {
+    this.id = this.route.snapshot.params['id'];
+    this.charity = this.api.db.find((item) => item._id === this.id);
+  }
+  ngOnInit(): void {
+    this.loadCharity();
+    this.itemService
+      .getShopItems(this.id)
+      .subscribe((data) => (this.items = [...data]));
+  }
 }

@@ -22,6 +22,7 @@ import { DonateCashComponent } from './donate-cash/donate-cash.component';
 import { DonateCartComponent } from './donate-cart/donate-cart.component';
 import { PageNavigationComponent } from './page-navigation/page-navigation.component';
 import { FormsModule } from '@angular/forms';
+import { ShopItemComponent } from './shop-item/shop-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     DonateCashComponent,
     DonateCartComponent,
     PageNavigationComponent,
+    ShopItemComponent,
   ],
   imports: [
     BrowserModule,
