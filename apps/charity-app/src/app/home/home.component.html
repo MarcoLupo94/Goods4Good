@@ -7,17 +7,20 @@
       </button>
     </div>
     <mat-card class="hero-profile">
-      <mat-icon fontIcon="account_circle"></mat-icon>
-      <h3>Hello {{ user.username }} !</h3>
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title>{{ user.username }}</mat-card-title>
+        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+      </mat-card-header>
     </mat-card>
   </div>
   <div class="charities">
     <h2>Good causes of the Day</h2>
-    <mat-list class="banners">
+    <div class="banners">
       <charity-app-production-charity-card
         *ngFor="let charity of charities.slice(0, 10)"
         [charity]="charity"
       ></charity-app-production-charity-card>
-    </mat-list>
+    </div>
   </div>
 </div>

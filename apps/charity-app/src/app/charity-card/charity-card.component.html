@@ -1,17 +1,26 @@
 <div class="container">
-  <img
-    class="banner"
-    mat-card-image
-    src="{{ charity.coverImageUrl }}"
-    alt="Charity Banner"
-  />
-  <mat-card class="card">
-    <h5>{{ charity.name }}</h5>
-    <div class="donate">
+  <mat-card class="box">
+    <img
+      class="banner"
+      mat-card-image
+      src="{{ charity.coverImageUrl }}"
+      alt="Charity Banner"
+    />
+    <mat-card-content class="donate">
+      <h3>{{ charity.name }}</h3>
+      <button class="arrow" mat-button (click)="navigate()">
+        DONATE
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- <mat-card-header class="donate">
+    </mat-card-header> -->
+<!-- <mat-card class="card">
       <h6>Donate!</h6>
       <button class="arrow" mat-button (click)="navigate()">
         <mat-icon>arrow_forward</mat-icon>
       </button>
-    </div>
-  </mat-card>
-</div>
+  </mat-card> -->

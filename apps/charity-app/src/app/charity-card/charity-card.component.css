@@ -1,13 +1,23 @@
 .container {
-  width: 60%;
-  height: 25%;
   border-radius: 20px;
+  position:relative;
 
 }
+.box {
+  background-color: var(--button-background);
+
+}
+
 .donate{
-  display: flex;
- justify-content: center;
- gap:0.5em
+height: 5%;
+display: flex;
+justify-content: space-around;
+align-items: baseline
+
+
+}
+.banner {
+  height: 15em;
 }
 
 .arrow
@@ -16,10 +26,15 @@
   transform : scale(0.7)
 }
 .card {
-  background-color: var(--secondary-background );
-  position: relative;
-  left: 0.2em;
-  bottom: 2em;
+  background-color: var(--button-background);
+  position: absolute;
   border-radius: 20px;
+  bottom: -2em;
+  left: 2em;
 
+
+}
+.card > * {
+  height: 50%;
+  margin: 0;
 }

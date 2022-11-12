@@ -28,14 +28,16 @@ h2 {
 
 }
 .banners {
-  margin-left: 3em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  align-items: center
-
-
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  margin-left : -2em;
 }
 .hero-profile {
+  max-width: 400px;
+
   color: var(--primary);
   padding: 1.5em;
   background-color : var(--secondary-background );
@@ -50,4 +52,7 @@ h2 {
   color : white;
   background-color:var(--primary);
 }
-/* TODO transform to grid when bigger than phone screen */
+.header-image{
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
