@@ -6,10 +6,13 @@
 }
 .items{
   margin: 1em;
+  justify-items: center;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   align-items: center;
-  gap: 1.5em;
   height: 80vh;
 
+}
+.component {
+  width: 80%;
 }

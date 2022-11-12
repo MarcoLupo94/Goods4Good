@@ -4,6 +4,15 @@
   flex-direction: column;
   gap: 1em;
 }
+.container {
+  position: relative;
+}
+.button{
+  margin: 0;
+  position: absolute;
+  background-color: var(--primary);
+}
+
 .main{
   display: flex;
   flex-direction: row;
@@ -12,15 +21,23 @@
   justify-content: space-between;
 }
 .infos{
-  padding: 0.3em;
-  margin-top: -4em;
+  padding: 0.2em;
+  margin-top: -1.3em;
+  margin-bottom: -2em;
+
+  height: 12rem;
+}
+.infos-detail .main{
+  height: 2rem;
+
 }
 .infos-detail{
   color:white;
+  margin-top: -2em;
+
 }
-.button{
-  position: relative;
-  bottom: 5em;
+.infos-detail p{
+  margin-top: -2em;
 }
 
 .image{
