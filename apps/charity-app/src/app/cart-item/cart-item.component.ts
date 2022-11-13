@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Charity, Item } from '@charity-app-production/api-interfaces';
+import { Item } from '@charity-app-production/api-interfaces';
 
 @Component({
   selector: 'charity-app-production-cart-item',
@@ -13,5 +13,7 @@ export class CartItemComponent implements OnInit {
   constructor() {}
   handleClick() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.item);
+  }
 }

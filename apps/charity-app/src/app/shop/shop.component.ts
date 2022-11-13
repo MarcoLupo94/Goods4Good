@@ -36,7 +36,7 @@ export class ShopComponent implements OnInit {
     this.cart = [...cart];
   }
   ngOnInit(): void {
-    this.user
+   this.user
       .setUser()
       .then(() => {
         this.cart = [...this.user.currentUser.cart];

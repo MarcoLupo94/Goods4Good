@@ -37,8 +37,9 @@ export class CurrentUserService {
   async setUser() {
     const user = await lastValueFrom(this.postUserToDatabase());
     this.currentUser = { ...user };
-    this.getCart().subscribe((data) => {
+    return this.getCart().subscribe((data) => {
       data ? (this.currentUser.cart = [...data]) : (this.currentUser.cart = []);
+      console.log(this.currentUser.cart);
     });
   }
 

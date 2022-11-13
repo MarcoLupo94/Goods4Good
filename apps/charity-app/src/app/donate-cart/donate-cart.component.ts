@@ -13,7 +13,6 @@ import { ItemsService } from '../utils/items.service';
 export class DonateCartComponent implements OnInit {
   charity: Charity | undefined;
   id = '';
-  items: Item[] = [];
   cart: Item[] = [];
   constructor(
     private route: ActivatedRoute,
@@ -31,12 +30,13 @@ export class DonateCartComponent implements OnInit {
     this.cart = [...cart];
   }
   ngOnInit(): void {
+    this.loadCharity();
     this.user
       .setUser()
       .then(() => {
+        console.log(this.user.currentUser.cart);
         this.cart = [...this.user.currentUser.cart];
       })
       .catch((e) => console.log(e));
-    this.loadCharity();
   }
 }
