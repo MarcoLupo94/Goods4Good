@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CharitiesApiService } from './utils/charities-api.service';
 
 @Component({
@@ -6,8 +6,6 @@ import { CharitiesApiService } from './utils/charities-api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor(private api: CharitiesApiService) {}
-
-  ngOnInit() {}
 }

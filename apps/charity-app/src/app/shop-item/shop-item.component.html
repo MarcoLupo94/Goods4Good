@@ -1,6 +1,19 @@
 <div class="container">
   <div class="hero">
-    <button class="button" mat-button hidden>Add to cart</button>
+    <button
+      *ngIf="!itemInCart; else elseBlock"
+      class="button"
+      mat-button
+      (click)="handleClick()"
+    >
+      Add to cart
+    </button>
+    <ng-template #elseBlock>
+      <button class="button" mat-button (click)="handleClick()">
+        Remove from cart
+      </button>
+    </ng-template>
+
     <img src="{{ item.img_url }}" alt="itemImage" class="image" />
   </div>
   <div class="infos">

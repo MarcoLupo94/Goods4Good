@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Item, User } from '@charity-app-production/api-interfaces';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -31,27 +31,38 @@ export class CurrentUserService {
   postUserToDatabase(): Observable<User> {
     return this.http.post<User>(environment.API_DB + 'users', this.currentUser);
   }
-  setUser() {
-    this.postUserToDatabase().subscribe(
-      (user) => (this.currentUser = { ...user })
-    );
+  async setUser() {
+    const user = await lastValueFrom(this.postUserToDatabase());
+    this.currentUser = { ...user };
+    this.getCart().subscribe((data) => {
+      data ? (this.currentUser.cart = [...data]) : (this.currentUser.cart = []);
+    });
   }
 
-  // TODO NEED TO CONNECT TO DATABASE and add Items to cart
-  getCart(_id: string): Observable<Item[]> {
-    return this.http.get<Item[]>(environment.API_DB + 'users/' + _id);
-  }
-  addItem(item: Item, _id: string): Observable<Item[]> {
-    return this.http.patch<Item[]>(environment.API_DB + 'users/' + _id, item);
-  }
-  removeItem(itemId: string, _id: string): Observable<Item[]> {
-    return this.http.patch<Item[]>(
-      environment.API_DB + 'remove/users/' + _id,
-      itemId
+  // add/Remove Items to cart
+  getCart(): Observable<Item[]> {
+    return this.http.get<Item[]>(
+      environment.API_DB + 'users/' + this.currentUser._id
     );
   }
-  removeAllItem(_id: string): Observable<Item[]> {
+  addItem(item: Item): Observable<Item[]> | undefined {
+    if (!this.currentUser.cart.find((el) => el._id === item._id))
+      return this.http.patch<Item[]>(
+        environment.API_DB + 'users/' + this.currentUser._id,
+        item
+      );
+    return undefined;
+  }
+  removeItem(itemId: string): Observable<Item[]> {
+    return this.http.patch<Item[]>(
+      environment.API_DB + 'users/remove/' + this.currentUser._id,
+      { itemId }
+    );
+  }
+  removeAllItem(): Observable<Item[]> {
     this.currentUser.cart = [];
-    return this.http.delete<Item[]>(environment.API_DB + 'users/' + _id);
+    return this.http.delete<Item[]>(
+      environment.API_DB + 'users/' + this.currentUser._id
+    );
   }
 }

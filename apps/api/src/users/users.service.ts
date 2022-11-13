@@ -2,7 +2,7 @@ import { Item, User } from '@charity-app-production/api-interfaces';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { item } from '../items/items.schema';
+import { item, ItemDocument } from '../items/items.schema';
 import { user, UserDocument } from './user.schema';
 
 @Injectable()
@@ -17,7 +17,12 @@ export class UsersService {
       const { email, username } = userData;
       const existingUser = await this.userModel.findOne({ email: email });
       if (!existingUser) {
-        return await this.userModel.create({ email, username }); // do stuff here
+        return await this.userModel.create({
+          email,
+          username,
+          donations: [],
+          cart: [],
+        });
       }
       return existingUser;
     } catch (e) {
@@ -25,9 +30,13 @@ export class UsersService {
     }
   }
 
-  async findCart(_id: string): Promise<Item[]> {
+  async findCart(_id: string) {
     try {
-      return await this.userModel.findById<Item[]>(_id).populate('cart').exec();
+      const user = await this.userModel.findById(_id).populate('cart');
+      const cart = await this.itemModel.find({
+        _id: { $in: user.cart },
+      });
+      return cart || [];
     } catch (e) {
       console.log(e);
     }
@@ -35,10 +44,12 @@ export class UsersService {
 
   async addToCart(_id: string, item: Item) {
     try {
-      const user = await this.userModel.findById(_id);
-      user.cart.push(item);
+      const user = await this.userModel.findById(_id).populate('cart');
+      user.cart.push(item._id);
       await user.save();
-      return await user.populate('cart');
+      return await this.itemModel.find({
+        _id: { $in: user.cart },
+      });
     } catch (e) {
       console.log(e);
     }
@@ -46,12 +57,13 @@ export class UsersService {
 
   async removeFromCart(_id: string, itemId: string) {
     try {
-      const user = await this.userModel.findById(_id);
-      const item = await this.itemModel.findById(itemId);
-      const indexToRemove = user.cart.indexOf(item);
+      const user = await this.userModel.findById(_id).populate('cart');
+      const indexToRemove = user.cart.indexOf(itemId);
       user.cart.splice(indexToRemove, 1);
       await user.save();
-      return await user.populate('cart');
+      return await this.itemModel.find({
+        _id: { $in: user.cart },
+      });
     } catch (e) {
       console.log(e);
     }
@@ -62,7 +74,7 @@ export class UsersService {
       const user = await this.userModel.findById(_id);
       user.cart = [];
       await user.save();
-      return await user.populate('cart');
+      return user.cart;
     } catch (e) {
       console.log(e);
     }

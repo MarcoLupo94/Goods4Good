@@ -62,7 +62,8 @@ export class UsersController {
     }
   }
   @Patch('remove/:id')
-  removeFromCart(@Param('id') _id: string, @Body() itemId: string) {
+  removeFromCart(@Param('id') _id: string, @Body() body) {
+    const { itemId } = body;
     try {
       return this.usersService.removeFromCart(_id, itemId);
     } catch (error) {
@@ -80,7 +81,20 @@ export class UsersController {
   }
 
   @Delete(':id')
-  remove(@Param('id') _id: string) {
-    return this.usersService.emptyCart(_id);
+  emptyCart(@Param('id') _id: string) {
+    try {
+      return this.usersService.emptyCart(_id);
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_MODIFIED,
+          error: 'NOT_MODIFIED',
+        },
+        HttpStatus.NOT_MODIFIED,
+        {
+          cause: error,
+        }
+      );
+    }
   }
 }
