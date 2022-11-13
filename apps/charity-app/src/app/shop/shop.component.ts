@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Charity, Item } from '@charity-app-production/api-interfaces';
 import { CharitiesApiService } from '../utils/charities-api.service';
 import { CurrentUserService } from '../utils/current-user.service';
@@ -18,10 +18,16 @@ export class ShopComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private api: CharitiesApiService,
     private itemService: ItemsService,
     private user: CurrentUserService
   ) {}
+  navigate() {
+    this.router.navigateByUrl(
+      `charity-page/${this.id}/donate/(secondary:cart)`
+    );
+  }
   loadCharity() {
     this.id = this.route.snapshot.params['id'];
     this.charity = this.api.db.find((item) => item._id === this.id);
