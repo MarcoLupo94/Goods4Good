@@ -14,12 +14,11 @@ export class UsersService {
 
   async create(userData: User) {
     try {
-      const { email, username } = userData;
+      const { email } = userData;
       const existingUser = await this.userModel.findOne({ email: email });
       if (!existingUser) {
         return await this.userModel.create({
-          email,
-          username,
+          ...userData,
           donations: [],
           cart: [],
         });

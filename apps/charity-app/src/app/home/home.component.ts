@@ -19,12 +19,12 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): any {
-    this.userService.setUser();
-    setTimeout(() => {
-      this.charities = [...this.api.db].sort(() => 0.5 - Math.random());
-
-      console.log(this.charities);
-      this.user = this.userService.currentUser;
-    }, 50);
+    this.userService
+      .setUser()
+      .then(() => {
+        this.charities = [...this.api.db].sort(() => 0.5 - Math.random());
+        this.user = this.userService.currentUser;
+      })
+      .catch((e) => console.log(e));
   }
 }

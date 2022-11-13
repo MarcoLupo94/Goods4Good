@@ -16,6 +16,9 @@ export class CurrentUserService {
     _id: '',
     email: '',
     username: '',
+    family_name: '',
+    given_name: '',
+    picture: '',
     cart: [],
     donations: [],
   };

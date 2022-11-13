@@ -17,6 +17,15 @@ export class user {
   username: string;
 
   @Prop()
+  given_name: string;
+
+  @Prop()
+  family_name: string;
+
+  @Prop()
+  picture: string;
+
+  @Prop()
   cart: string[];
 
   @Prop()

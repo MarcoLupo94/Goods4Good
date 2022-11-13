@@ -30,10 +30,15 @@ export class ShopComponent implements OnInit {
     this.cart = [...cart];
   }
   ngOnInit(): void {
+    this.user
+      .setUser()
+      .then(() => {
+        this.cart = [...this.user.currentUser.cart];
+      })
+      .catch((e) => console.log(e));
     this.loadCharity();
     this.itemService.getShopItems(this.id).subscribe((data) => {
       this.items = [...data];
     });
-    this.cart = [...this.user.currentUser.cart];
   }
 }

@@ -2,6 +2,9 @@ export interface User {
   _id: string;
   email: string;
   username: string;
+  given_name: string;
+  family_name: string;
+  picture: string;
   cart: Item[];
   donations: Donation[];
 }

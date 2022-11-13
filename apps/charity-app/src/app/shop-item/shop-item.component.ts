@@ -34,7 +34,9 @@ export class ShopItemComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    if (this.user.currentUser.cart.find((el) => el._id === this.item._id))
-      this.itemInCart = true;
+    setTimeout(() => {
+      if (this.user.currentUser.cart.find((el) => el._id === this.item._id))
+        this.itemInCart = true;
+    }, 50);
   }
 }
