@@ -38,13 +38,17 @@ export class CurrentUserService {
   }
 
   // TODO NEED TO CONNECT TO DATABASE and add Items to cart
-  addItem(item: Item): Observable<User> {
-    return this.http.patch<User>(environment.API_DB + 'users', item);
+  getItem(item: Item, _id: string): Observable<Item[]> {
+    return this.http.patch<Item[]>(environment.API_DB + 'users/' + _id, item);
   }
-  removeItem(itemId: string): Observable<User> {
-    return this.http.patch<User>(environment.API_DB + 'users', itemId);
+  addItem(item: Item, _id: string): Observable<Item[]> {
+    return this.http.patch<Item[]>(environment.API_DB + 'users/' + _id, item);
   }
-  removeAllItem(): Observable<User> {
-    return this.http.patch<User>(environment.API_DB + 'users', 'all');
+  removeItem(itemId: string, _id: string): Observable<Item[]> {
+    return this.http.patch<Item[]>(environment.API_DB + 'users/' + _id, itemId);
+  }
+  removeAllItem(_id: string): Observable<Item[]> {
+    this.currentUser.cart = [];
+    return this.http.delete<Item[]>(environment.API_DB + 'users/' + _id);
   }
 }
