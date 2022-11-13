@@ -1,1 +1,7 @@
-<p>donate-cart works!</p>
+<div class="container">
+  <mat-list class="cart">
+    <charity-app-production-cart-item *ngFor="let item of items" [item]="item">
+    </charity-app-production-cart-item>
+  </mat-list>
+  <button class="button" mat-button>Donate</button>
+</div>

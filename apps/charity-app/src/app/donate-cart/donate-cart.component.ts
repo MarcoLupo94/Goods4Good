@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Charity, Item } from '@charity-app-production/api-interfaces';
+import { CharitiesApiService } from '../utils/charities-api.service';
+import { CurrentUserService } from '../utils/current-user.service';
+import { ItemsService } from '../utils/items.service';
 
 @Component({
   selector: 'charity-app-production-donate-cart',
@@ -6,7 +11,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./donate-cart.component.css'],
 })
 export class DonateCartComponent implements OnInit {
-  constructor() {}
+  charity: Charity | undefined;
+  id = '';
+  items: Item[] = [];
+  cart: Item[] = [];
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private api: CharitiesApiService,
+    private itemService: ItemsService,
+    private user: CurrentUserService
+  ) {}
 
-  ngOnInit(): void {}
+  loadCharity() {
+    this.id = this.route.snapshot.params['id'];
+    this.charity = this.api.db.find((item) => item._id === this.id);
+  }
+  setCart(cart: Item[]) {
+    this.cart = [...cart];
+  }
+  ngOnInit(): void {
+    this.user
+      .setUser()
+      .then(() => {
+        this.cart = [...this.user.currentUser.cart];
+      })
+      .catch((e) => console.log(e));
+    this.loadCharity();
+  }
 }

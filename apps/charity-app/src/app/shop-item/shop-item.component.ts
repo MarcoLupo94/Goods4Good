@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Charity, Item } from '@charity-app-production/api-interfaces';
+import { Item } from '@charity-app-production/api-interfaces';
 import { CurrentUserService } from '../utils/current-user.service';
 
 @Component({
@@ -10,9 +10,8 @@ import { CurrentUserService } from '../utils/current-user.service';
 export class ShopItemComponent implements OnInit {
   @Input()
   item!: Item;
-  @Input()
-  charity!: Charity;
-  @Output() updateCart = new EventEmitter<Item[]>();
+  @Output()
+  updateCart = new EventEmitter<Item[]>();
 
   itemInCart = false;
   constructor(private user: CurrentUserService) {}
