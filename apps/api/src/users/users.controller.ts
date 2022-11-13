@@ -7,6 +7,8 @@ import {
   Patch,
   Param,
   Delete,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 
@@ -25,17 +27,60 @@ export class UsersController {
   // }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+  findCart(@Param('id') _id: string) {
+    try {
+      return this.usersService.findCart(_id);
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: 'Not found',
+        },
+        HttpStatus.NOT_FOUND,
+        {
+          cause: error,
+        }
+      );
+    }
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() item: Item) {
-    return this.usersService.update(id, item);
+  addToCart(@Param('id') _id: string, @Body() item: Item) {
+    try {
+      return this.usersService.addToCart(_id, item);
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_MODIFIED,
+          error: 'NOT_MODIFIED',
+        },
+        HttpStatus.NOT_MODIFIED,
+        {
+          cause: error,
+        }
+      );
+    }
+  }
+  @Patch('remove/:id')
+  removeFromCart(@Param('id') _id: string, @Body() itemId: string) {
+    try {
+      return this.usersService.removeFromCart(_id, itemId);
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_MODIFIED,
+          error: 'NOT_MODIFIED',
+        },
+        HttpStatus.NOT_MODIFIED,
+        {
+          cause: error,
+        }
+      );
+    }
   }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.usersService.remove(+id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') _id: string) {
+    return this.usersService.emptyCart(_id);
+  }
 }
