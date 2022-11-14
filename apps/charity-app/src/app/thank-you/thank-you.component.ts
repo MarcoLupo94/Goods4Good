@@ -12,7 +12,4 @@ export class ThankYouComponent {
   navigate() {
     this.router.navigate(['home']);
   }
-  backClicked() {
-    this.location.back();
-  }
 }

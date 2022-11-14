@@ -42,6 +42,18 @@ export class DonateCartComponent implements OnInit {
       this.cart = [...data];
     });
   }
+  checkOut() {
+    this.user.removeAllItem().subscribe((data) => {
+      this.user.currentUser.cart = [...data];
+      this.cart = [...data];
+    });
+
+    this.router.navigate([
+      '/charity-page/',
+      this.router.url.split('/')[2],
+      'thank-you',
+    ]);
+  }
   ngOnInit(): void {
     this.loadCharity();
     this.user

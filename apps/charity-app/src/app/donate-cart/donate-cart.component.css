@@ -6,6 +6,10 @@
   padding: 1em;
 
 }
+.empty-cart{
+  color: white;
+  padding: 2em ;
+}
 .button {
   background-color: var(--primary);
   width: 60%;

@@ -11,8 +11,8 @@
     >
     </charity-app-production-cart-item>
   </mat-list>
-  <ng-template #elseBlock class="cart">
-    <h2>Your bag is currently empty.</h2>
+  <ng-template #elseBlock>
+    <h2 class="empty-cart">Your bag is currently empty.</h2>
   </ng-template>
   <mat-divider></mat-divider>
   <div class="checkout">
@@ -22,5 +22,12 @@
   <mat-divider></mat-divider>
 </div>
 <div class="box">
-  <button class="button" mat-button>Donate</button>
+  <button
+    *ngIf="cart.length > 0"
+    class="button"
+    mat-button
+    (click)="checkOut()"
+  >
+    Donate
+  </button>
 </div>
