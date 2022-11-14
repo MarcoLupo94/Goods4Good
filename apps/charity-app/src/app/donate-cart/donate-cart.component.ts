@@ -26,9 +26,6 @@ export class DonateCartComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.charity = this.api.db.find((item) => item._id === this.id);
   }
-  setCart(cart: Item[]) {
-    this.cart = [...cart];
-  }
   setTotalPrice() {
     this.cartTotal = this.cart.reduce(
       (prev, current): number => prev + current.price,

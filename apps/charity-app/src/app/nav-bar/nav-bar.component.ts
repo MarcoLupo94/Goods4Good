@@ -1,9 +1,9 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Item } from '@charity-app-production/api-interfaces';
 import { Observable } from 'rxjs';
+import { CurrentUserService } from '../utils/current-user.service';
 
 @Component({
   selector: 'charity-app-production-nav-bar',
@@ -12,11 +12,11 @@ import { Observable } from 'rxjs';
 })
 export class NavBarComponent implements OnInit {
   @Input()
-  cart!: Item[];
+  cart: Item[] | undefined;
   isLoggedIn$!: Observable<boolean>;
 
   constructor(
-    private route: ActivatedRoute,
+    private user: CurrentUserService,
     public auth: AuthService,
     @Inject(DOCUMENT) public document: Document
   ) {}
@@ -27,5 +27,12 @@ export class NavBarComponent implements OnInit {
   }
   ngOnInit() {
     this.isLoggedIn$ = this.auth.isAuthenticated$;
+    this.user
+      .setUser()
+      .then((data) => {
+        this.cart = [...data];
+        console.log(this.cart);
+      })
+      .catch((e) => console.log(e));
   }
 }

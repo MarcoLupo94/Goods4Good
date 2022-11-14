@@ -1,15 +1,8 @@
+<charity-app-production-nav-bar [cart]="cart"></charity-app-production-nav-bar>
 <div class="container" *ngIf="charity">
   <charity-app-production-page-navigation pageName="Shop">
   </charity-app-production-page-navigation>
-  <button class="cart" mat-button *ngIf="cart.length" (click)="navigate()">
-    <mat-icon
-      fontIcon="shopping_cart"
-      matBadge="{{ cart.length }}"
-      matBadgeColor="warn"
-    ></mat-icon>
-  </button>
 </div>
-
 <div class="items" *ngIf="charity">
   <charity-app-production-shop-item
     (updateCart)="setCart($event)"

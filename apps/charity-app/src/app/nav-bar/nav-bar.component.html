@@ -1,21 +1,21 @@
 <div class="body" *ngIf="isLoggedIn$ | async">
-  <div class="right">
+  <div class="left" routerLink="/home">
+    <a routerLink="/home">
+      <img src="../../assets/MiniLogo.png" alt="Logo" class="" />
+    </a>
+    <h4>GOODS 4 GOOD</h4>
+  </div>
+  <div class="left right">
     <button mat-icon-button>
       <mat-icon>search</mat-icon>
     </button>
-    <button class="cart" mat-button>
-      <mat-icon fontIcon="shopping_cart" matBadgeColor="warn"></mat-icon>
-    </button>
-  </div>
-
-  <a routerLink="/home">
-    <img src="../../assets/MiniLogo.png" alt="Logo" class="" />
-  </a>
-  <!-- *ngIf="cart.length" -->
-  <!-- matBadge="{{ cart.length }}" -->
-  <div class="left">
-    <button class="cart" mat-button>
-      <mat-icon fontIcon="shopping_cart" matBadgeColor="warn"></mat-icon>
+    <button class="cart" mat-button [routerLink]="['', 'cart']">
+      <mat-icon
+        fontIcon="shopping_cart"
+        matBadgeColor="warn"
+        matBadge="{{ cart?.length }}"
+        [matBadgeHidden]="cart?.length === 0"
+      ></mat-icon>
     </button>
     <button class="logout" mat-button (click)="logout()">
       <mat-icon fontIcon="exit_to_app"></mat-icon>

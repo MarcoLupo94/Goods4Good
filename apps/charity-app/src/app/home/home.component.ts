@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   charities: Charity[] = [];
   user!: User;
   randomizedCharities: Charity[] = [];
+  photo =
+    'https://res.cloudinary.com/everydotorg/image/upload/f_auto,c_limit,w_3840,q_80/profile_pics/psplpmozwp59ptutdprz';
 
   constructor(
     private api: CharitiesApiService,
@@ -24,7 +26,6 @@ export class HomeComponent implements OnInit {
       .then(() => {
         this.charities = [...this.api.db].sort(() => 0.5 - Math.random());
         this.user = this.userService.currentUser;
-        console.log(this.user);
       })
       .catch((e) => console.log(e));
   }
