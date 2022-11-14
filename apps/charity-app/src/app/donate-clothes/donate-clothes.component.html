@@ -1,11 +1,10 @@
 <charity-app-production-nav-bar></charity-app-production-nav-bar>
-
 <div class="body">
   <charity-app-production-page-navigation
     pageName="Donate Clothes"
   ></charity-app-production-page-navigation>
+  <h3>Donate an Item</h3>
   <div class="container">
-    <p>Item informations</p>
     <form #f="ngForm" class="form" (ngSubmit)="handleSubmit(f)">
       <p>
         <mat-form-field appearance="outline">
@@ -32,17 +31,25 @@
           <input matInput placeholder="S/M/L" ngModel name="size" required />
         </mat-form-field>
       </p>
+      <button
+        type="button"
+        mat-raised-button
+        (click)="imageInput.click()"
+        class="file-uploader"
+      >
+        <mat-icon>image </mat-icon>
+      </button>
 
-      <label class="image-upload-container btn btn-bwm">
-        <span>Select Image</span>
-        <input
-          #imageInput
-          type="file"
-          accept="image/*"
-          (change)="processFile(imageInput)"
-          required
-        />
-      </label>
+      <input
+        hidden
+        class="uploader"
+        #imageInput
+        type="file"
+        accept="image/*"
+        (change)="processFile(imageInput)"
+        required
+      />
+
       <div *ngIf="selectedFile" class="img-preview-container">
         <mat-icon
           *ngIf="selectedFile.status === 'ok'"
@@ -52,7 +59,7 @@
           *ngIf="selectedFile.status === 'fail'"
           fontIcon="block"
         ></mat-icon>
-        <img src="{{ imgUrl }}" />
+        <img class="image" src="{{ imgUrl }}" alt="item Image" />
       </div>
 
       <p>
@@ -69,11 +76,12 @@
         </mat-form-field>
       </p>
       <button
+        class="submit"
         mat-button
         type="submit"
         [disabled]="!f.valid || selectedFile.status !== 'ok'"
       >
-        submit
+        Donate
       </button>
     </form>
   </div>

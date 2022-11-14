@@ -42,3 +42,12 @@
   background-color: var(--secondary-background);
 
 }
+
+@media screen and (min-width: 480px) {
+  .body{
+    margin-left : 25%;
+    width: 50%;
+    background-color: var(--secondary-background);
+
+  }
+}

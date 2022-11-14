@@ -43,7 +43,6 @@ export class DonateClothesComponent {
       user_owner: this.user.currentUser._id, //ADD user reference Id
       img_url: this.imgUrl,
     };
-    console.log(this.item);
     this.itemService.postItem(this.item).subscribe();
     form.resetForm();
     this.router.navigate(['thank-you']);

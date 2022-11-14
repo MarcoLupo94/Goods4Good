@@ -3,14 +3,14 @@
     <button
       *ngIf="!itemInCart; else elseBlock"
       class="button"
-      mat-button
+      mat-icon-button
       (click)="handleClick()"
     >
-      Add to cart
+      <mat-icon>add_shopping_cart</mat-icon>
     </button>
     <ng-template #elseBlock>
-      <button class="button" mat-button (click)="handleClick()">
-        Remove from cart
+      <button class="button" mat-icon-button (click)="handleClick()">
+        <mat-icon>remove_shopping_cart</mat-icon>
       </button>
     </ng-template>
 
