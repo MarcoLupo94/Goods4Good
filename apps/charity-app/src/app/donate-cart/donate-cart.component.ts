@@ -33,9 +33,9 @@ export class DonateCartComponent implements OnInit {
     this.loadCharity();
     this.user
       .setUser()
-      .then(() => {
+      .then((data) => {
         console.log(this.user.currentUser.cart);
-        this.cart = [...this.user.currentUser.cart];
+        this.cart = [...data];
       })
       .catch((e) => console.log(e));
   }

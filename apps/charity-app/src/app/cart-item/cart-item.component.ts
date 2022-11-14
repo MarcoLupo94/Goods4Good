@@ -13,7 +13,5 @@ export class CartItemComponent implements OnInit {
   constructor() {}
   handleClick() {}
 
-  ngOnInit(): void {
-    console.log(this.item);
-  }
+  ngOnInit(): void {}
 }

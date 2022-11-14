@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
       .then(() => {
         this.charities = [...this.api.db].sort(() => 0.5 - Math.random());
         this.user = this.userService.currentUser;
+        console.log(this.user);
       })
       .catch((e) => console.log(e));
   }

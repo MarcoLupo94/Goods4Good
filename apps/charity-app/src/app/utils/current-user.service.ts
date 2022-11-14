@@ -37,10 +37,17 @@ export class CurrentUserService {
   async setUser() {
     const user = await lastValueFrom(this.postUserToDatabase());
     this.currentUser = { ...user };
-    return this.getCart().subscribe((data) => {
-      data ? (this.currentUser.cart = [...data]) : (this.currentUser.cart = []);
-      console.log(this.currentUser.cart);
-    });
+    const cart = await lastValueFrom(this.getCart());
+    return cart
+      ? (this.currentUser.cart = [...cart])
+      : (this.currentUser.cart = []);
+    console.log('Promise', cart);
+    return cart;
+    // return this.getCart().subscribe((data) => {
+    //   // console.log(this.currentUser.cart);
+    //   console.log('IF data', (this.currentUser.cart = [...data]));
+    //   console.log('else', (this.currentUser.cart = []));
+    // });
   }
 
   // add/Remove Items to cart
