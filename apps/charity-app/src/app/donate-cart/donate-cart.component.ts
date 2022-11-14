@@ -36,12 +36,17 @@ export class DonateCartComponent implements OnInit {
       0
     );
   }
+  removeItem(item: Item) {
+    this.user.removeItem(item._id)?.subscribe((data) => {
+      this.user.currentUser.cart = [...data];
+      this.cart = [...data];
+    });
+  }
   ngOnInit(): void {
     this.loadCharity();
     this.user
       .setUser()
       .then((data) => {
-        console.log(this.user.currentUser.cart);
         this.cart = [...data];
         this.setTotalPrice();
       })

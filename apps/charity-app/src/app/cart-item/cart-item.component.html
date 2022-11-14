@@ -6,6 +6,8 @@
     <h3 matLine>{{ item.title }}</h3>
     <p matLine>Size: {{ item.size }}</p>
     <h3 class="price" matLine>£{{ item.price }}.00 GBP</h3>
-    <button mat-icon-button><mat-icon>delete</mat-icon></button>
+    <button mat-icon-button (click)="handleClick()">
+      <mat-icon>delete</mat-icon>
+    </button>
   </div>
 </div>

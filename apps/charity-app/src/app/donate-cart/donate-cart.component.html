@@ -3,10 +3,17 @@
     <h3>SHOPPING BAG</h3>
   </div>
 
-  <mat-list class="cart">
-    <charity-app-production-cart-item *ngFor="let item of cart" [item]="item">
+  <mat-list class="cart" *ngIf="cart.length > 0; else elseBlock">
+    <charity-app-production-cart-item
+      *ngFor="let item of cart"
+      [item]="item"
+      (updateCart)="removeItem($event)"
+    >
     </charity-app-production-cart-item>
   </mat-list>
+  <ng-template #elseBlock class="cart">
+    <h2>Your bag is currently empty.</h2>
+  </ng-template>
   <mat-divider></mat-divider>
   <div class="checkout">
     <h3>TOTAL</h3>

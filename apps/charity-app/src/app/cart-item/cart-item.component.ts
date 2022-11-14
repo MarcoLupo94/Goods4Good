@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Item } from '@charity-app-production/api-interfaces';
 
 @Component({
@@ -6,12 +6,11 @@ import { Item } from '@charity-app-production/api-interfaces';
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.css'],
 })
-export class CartItemComponent implements OnInit {
+export class CartItemComponent {
   @Input()
   item!: Item;
-  @Output() updateCart = new EventEmitter<Item[]>();
-  constructor() {}
-  handleClick() {}
-
-  ngOnInit(): void {}
+  @Output() updateCart = new EventEmitter<Item>();
+  handleClick() {
+    this.updateCart.emit(this.item);
+  }
 }
