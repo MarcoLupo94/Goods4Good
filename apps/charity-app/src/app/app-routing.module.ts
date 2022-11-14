@@ -14,6 +14,7 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: DonateCartComponent, canActivate: [AuthGuard] },
   {
     path: 'charity-page',
     canActivate: [AuthGuard],
@@ -29,9 +30,9 @@ const routes: Routes = [
         ],
       },
       { path: ':id/donate-clothes', component: DonateClothesComponent },
-      { path: ':id/thank-you', component: ThankYouComponent },
     ],
   },
+  { path: 'thank-you', component: ThankYouComponent },
 ];
 
 @NgModule({

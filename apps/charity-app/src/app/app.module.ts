@@ -24,6 +24,7 @@ import { PageNavigationComponent } from './page-navigation/page-navigation.compo
 import { FormsModule } from '@angular/forms';
 import { ShopItemComponent } from './shop-item/shop-item.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     PageNavigationComponent,
     ShopItemComponent,
     CartItemComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,

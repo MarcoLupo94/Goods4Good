@@ -10,12 +10,7 @@ export class DonateCashComponent {
   constructor(private router: Router) {}
   value: number | undefined;
   handleSubmit() {
-    console.log(this.router.url.split('/')[2]);
-    this.router.navigate([
-      '/charity-page/',
-      this.router.url.split('/')[2],
-      'thank-you',
-    ]);
+    this.router.navigate(['thank-you']);
   }
   setValue(event: number) {
     this.value = event;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ImageService } from '../utils/image.service';
 import { NgForm } from '@angular/forms';
 import { Item } from '@charity-app-production/api-interfaces';
@@ -46,12 +46,7 @@ export class DonateClothesComponent {
     console.log(this.item);
     this.itemService.postItem(this.item).subscribe();
     form.resetForm();
-
-    this.router.navigate([
-      '/charity-page',
-      this.item.charity_shop,
-      'thank-you',
-    ]);
+    this.router.navigate(['thank-you']);
   }
 
   processFile(image: any) {

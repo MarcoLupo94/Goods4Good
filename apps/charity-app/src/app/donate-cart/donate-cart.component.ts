@@ -19,7 +19,6 @@ export class DonateCartComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private api: CharitiesApiService,
-    private itemService: ItemsService,
     private user: CurrentUserService
   ) {}
 
@@ -48,11 +47,7 @@ export class DonateCartComponent implements OnInit {
       this.cart = [...data];
     });
 
-    this.router.navigate([
-      '/charity-page/',
-      this.router.url.split('/')[2],
-      'thank-you',
-    ]);
+    this.router.navigate(['thank-you']);
   }
   ngOnInit(): void {
     this.loadCharity();
