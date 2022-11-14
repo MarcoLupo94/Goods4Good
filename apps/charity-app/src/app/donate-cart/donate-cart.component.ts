@@ -14,6 +14,7 @@ export class DonateCartComponent implements OnInit {
   charity: Charity | undefined;
   id = '';
   cart: Item[] = [];
+  cartTotal = 0;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -29,6 +30,12 @@ export class DonateCartComponent implements OnInit {
   setCart(cart: Item[]) {
     this.cart = [...cart];
   }
+  setTotalPrice() {
+    this.cartTotal = this.cart.reduce(
+      (prev, current): number => prev + current.price,
+      0
+    );
+  }
   ngOnInit(): void {
     this.loadCharity();
     this.user
@@ -36,6 +43,7 @@ export class DonateCartComponent implements OnInit {
       .then((data) => {
         console.log(this.user.currentUser.cart);
         this.cart = [...data];
+        this.setTotalPrice();
       })
       .catch((e) => console.log(e));
   }

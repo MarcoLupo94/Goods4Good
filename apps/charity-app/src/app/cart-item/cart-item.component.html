@@ -1,10 +1,11 @@
-<mat-list-item>
+<div class="container">
   <div class="box">
-    <!-- <img src="{{ item.img_url }}" alt="itemImage" /> -->
+    <img src="{{ item.img_url }}" alt="itemImage" />
   </div>
-  <h3 matLine>{{ item.title }}</h3>
-  <p matLine>{{ item.size }}</p>
-  <p matLine>{{ item.size }}</p>
-  <h3 matLine>{{ item.price }}</h3>
-  <button mat-icon-button><mat-icon>delete</mat-icon></button>
-</mat-list-item>
+  <div class="text">
+    <h3 matLine>{{ item.title }}</h3>
+    <p matLine>Size: {{ item.size }}</p>
+    <h3 class="price" matLine>£{{ item.price }}.00 GBP</h3>
+    <button mat-icon-button><mat-icon>delete</mat-icon></button>
+  </div>
+</div>

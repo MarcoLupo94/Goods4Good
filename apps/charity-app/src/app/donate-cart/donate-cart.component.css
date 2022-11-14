@@ -1,0 +1,53 @@
+.box {
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+
+}
+.button {
+  background-color: var(--primary);
+  width: 60%;
+
+}
+.container {
+  background-color: var(--secondary-background);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6em;
+  margin: 1em;
+}
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap :6em;
+  padding: 1em;
+  margin-top: -4em;
+
+}
+.title
+{
+  padding: 1em;
+  background-color:  var(--button-background);
+  color:white;
+}
+
+.checkout {
+  display: flex;
+  justify-content: space-between;
+  color:white ;
+  padding-left: 1em;
+  padding-right: 2em;
+  margin-top: -5em;
+  margin-bottom: -5em;
+
+}
+@media screen and (min-width: 480px) {
+  .container{
+    margin-left : 25%;
+    width: 50%;
+
+  }
+}
