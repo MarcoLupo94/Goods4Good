@@ -1,0 +1,28 @@
+<charity-app-production-nav-bar></charity-app-production-nav-bar>
+<div class="container">
+  <form (ngSubmit)="submit(f)" #f="ngForm" class="search">
+    <mat-form-field appearance="outline" class="field">
+      <input
+        [(ngModel)]="formValue"
+        (ngModelChange)="checkValidity($event)"
+        type="text"
+        placeholder="Search a charity..."
+        matInput
+        name="search"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option" #selected>
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button type="submit" hidden [disabled]="formDisabled"></button>
+  </form>
+  <div class="banners">
+    <charity-app-production-charity-card
+      *ngFor="let charity of charities"
+      [charity]="charity"
+    ></charity-app-production-charity-card>
+  </div>
+</div>

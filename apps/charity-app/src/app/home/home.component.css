@@ -68,3 +68,15 @@ h2 {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+@media screen and (max-width: 480px) {
+  .hero {
+    padding: 1em;
+  }
+  .hero > h1{
+    font-size: 2em;
+  }
+  .hero > p{
+    font-size: 1.3em;
+    font-weight: 400;
+  }
+}

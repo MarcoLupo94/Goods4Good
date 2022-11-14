@@ -1,12 +1,12 @@
 <div class="body" *ngIf="isLoggedIn$ | async">
   <div class="left" routerLink="/home">
     <a routerLink="/home">
-      <img src="../../assets/MiniLogo.png" alt="Logo" class="" />
+      <img src="../../assets/MiniLogo.png" alt="Logo" />
     </a>
     <h4>GOODS 4 GOOD</h4>
   </div>
   <div class="left right">
-    <button mat-icon-button>
+    <button mat-icon-button [routerLink]="['', 'search']">
       <mat-icon>search</mat-icon>
     </button>
     <button class="cart" mat-button [routerLink]="['', 'cart']">

@@ -10,11 +10,14 @@ import { DonateCartComponent } from './donate-cart/donate-cart.component';
 import { DonateCashComponent } from './donate-cash/donate-cash.component';
 import { DonateClothesComponent } from './donate-clothes/donate-clothes.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: DonateCartComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchPageComponent, canActivate: [AuthGuard] },
+
   {
     path: 'charity-page',
     canActivate: [AuthGuard],
