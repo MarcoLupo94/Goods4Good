@@ -3,12 +3,12 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color:#1E1F23;
+  background-color: var(--primary-background);
   height: 100%;
   width: 100%;
   color: white;;
 }
 
 button {
-  background-color: #1AB75D;
+  background-color:var(--primary);
 }

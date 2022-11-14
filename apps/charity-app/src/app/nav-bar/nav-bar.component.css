@@ -1,0 +1,27 @@
+.body {
+  display: flex;
+  background-color: var(--secondary-background);
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  height: 8%;
+  gap: 1em;
+}
+img {
+  max-width: 60px;
+  max-height: 60px;
+
+}
+.left {
+  flex-shrink: 6;
+
+}
+button {
+  color: var(--primary);
+
+}
+
+button:hover {
+  background-color: var(--button-background);
+  color: white;
+}
