@@ -3,7 +3,7 @@
   <charity-app-production-page-navigation pageName="Shop">
   </charity-app-production-page-navigation>
 </div>
-<div class="items" *ngIf="charity">
+<div class="items" *ngIf="items.length > 0; else block">
   <charity-app-production-shop-item
     (updateCart)="setCart($event)"
     class="component"
@@ -11,3 +11,8 @@
     *ngFor="let item of items"
   ></charity-app-production-shop-item>
 </div>
+<ng-template #block>
+  <div class="template">
+    <h1 class="text">No items to show yet...</h1>
+  </div></ng-template
+>

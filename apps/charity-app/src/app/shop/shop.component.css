@@ -13,9 +13,16 @@
   align-items: center;
   height: 80vh;
 
+
+}
+.template {
+  display: flex;
+  justify-content: center;
+  color :white
 }
 .component {
   width: 80%;
+  max-width: 400px;
 }
 .cart {
   color : var(--primary);

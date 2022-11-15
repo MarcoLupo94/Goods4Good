@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { Charity, Item } from '@charity-app-production/api-interfaces';
+import { SpinnerComponent } from '../spinner/spinner.component';
 import { CharitiesApiService } from '../utils/charities-api.service';
 import { CurrentUserService } from '../utils/current-user.service';
 import { StripeService } from '../utils/stripe.service';
-import { MatDialog } from '@angular/material/dialog';
-import { SpinnerComponent } from '../spinner/spinner.component';
 
 @Component({
   selector: 'charity-app-production-donate-cart',
@@ -19,7 +19,6 @@ export class DonateCartComponent implements OnInit {
   cartTotal = 0;
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private api: CharitiesApiService,
     private user: CurrentUserService,
     private stripe: StripeService,
@@ -40,6 +39,7 @@ export class DonateCartComponent implements OnInit {
     this.user.removeItem(item._id)?.subscribe((data) => {
       this.user.currentUser.cart = [...data];
       this.cart = [...data];
+      this.setTotalPrice();
     });
   }
   checkOut() {
