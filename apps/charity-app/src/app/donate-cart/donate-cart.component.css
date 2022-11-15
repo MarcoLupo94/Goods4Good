@@ -16,7 +16,9 @@
   color: white;
   font-size: 1em;
 }
-
+::ng-deep .mat-dialog-container{
+  background-color:var(--secondary-background);
+}
 .container {
   background-color: var(--secondary-background);
   position: relative;

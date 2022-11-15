@@ -18,7 +18,17 @@ export class StripeService {
       .subscribe(async (res: any) => {
         const stripe = await loadStripe(environment.STRIPE_KEY);
         const id = res.session.id;
-        console.log(res.session.id);
+        stripe?.redirectToCheckout({
+          sessionId: id,
+        });
+      });
+  }
+  cashCheckout(value: number): void {
+    this.http
+      .post(environment.API_DB + 'cash', { value })
+      .subscribe(async (res: any) => {
+        const stripe = await loadStripe(environment.STRIPE_KEY);
+        const id = res.session.id;
         stripe?.redirectToCheckout({
           sessionId: id,
         });

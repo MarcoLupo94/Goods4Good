@@ -27,6 +27,7 @@ import { CartItemComponent } from './cart-item/cart-item.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
     NavBarComponent,
     SearchPageComponent,
     ConfirmModalComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

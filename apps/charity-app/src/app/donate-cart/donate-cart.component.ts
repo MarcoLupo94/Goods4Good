@@ -4,6 +4,8 @@ import { Charity, Item } from '@charity-app-production/api-interfaces';
 import { CharitiesApiService } from '../utils/charities-api.service';
 import { CurrentUserService } from '../utils/current-user.service';
 import { StripeService } from '../utils/stripe.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 @Component({
   selector: 'charity-app-production-donate-cart',
@@ -20,7 +22,8 @@ export class DonateCartComponent implements OnInit {
     private router: Router,
     private api: CharitiesApiService,
     private user: CurrentUserService,
-    private stripe: StripeService
+    private stripe: StripeService,
+    public dialog: MatDialog
   ) {}
 
   loadCharity() {
@@ -40,6 +43,7 @@ export class DonateCartComponent implements OnInit {
     });
   }
   checkOut() {
+    const dialogRef = this.dialog.open(SpinnerComponent);
     this.stripe.cartCheckout(this.cart);
     this.user.removeAllItem().subscribe((data) => {
       this.user.currentUser.cart = [...data];

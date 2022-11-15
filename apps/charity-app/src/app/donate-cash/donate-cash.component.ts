@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { SpinnerComponent } from '../spinner/spinner.component';
+import { StripeService } from '../utils/stripe.service';
 
 @Component({
   selector: 'charity-app-production-donate-cash',
@@ -7,15 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./donate-cash.component.css'],
 })
 export class DonateCashComponent {
-  constructor(private router: Router) {}
-  value: number | undefined;
+  constructor(public dialog: MatDialog, private stripe: StripeService) {}
+  value!: number;
   handleSubmit() {
-    this.router.navigate(['thank-you']);
+    const dialogRef = this.dialog.open(SpinnerComponent);
+    this.stripe.cashCheckout(this.value);
   }
   setValue(event: number) {
     this.value = event;
-  }
-  onCheckout(): void{
-
   }
 }

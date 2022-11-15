@@ -65,4 +65,30 @@ export class AppController {
       console.log(err);
     }
   }
+  @Post('cash')
+  async cash(@Body() body: any) {
+    try {
+      const { value } = body;
+      const item = {
+        quantity: 1,
+        price_data: {
+          currency: 'gbp',
+          product_data: {
+            name: 'Goods4Good',
+            images: [environment.LOGO],
+          },
+          unit_amount: value * 100,
+        },
+      };
+      const session = await stripe.checkout.sessions.create({
+        line_items: [item],
+        mode: 'payment',
+        success_url: environment.CLIENT_URL + 'thank-you',
+        cancel_url: environment.CLIENT_URL,
+      });
+      return { session };
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }

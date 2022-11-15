@@ -25,6 +25,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   exports: [
@@ -38,6 +39,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,
