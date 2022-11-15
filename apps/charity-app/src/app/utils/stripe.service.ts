@@ -24,6 +24,8 @@ cartCheckout(cart: Item[]): void {
     })
     .subscribe(async (res: any) => {
       const stripe = await loadStripe(environment.STRIPE_KEY);
+      const id = res.session.id;
+      console.log(res.session.id);
       stripe?.redirectToCheckout({
         sessionId: res.id,
 =======
@@ -34,9 +36,10 @@ cartCheckout(cart: Item[]): void {
       })
       .subscribe(async (res: any) => {
         const stripe = await loadStripe(environment.STRIPE_KEY);
+        const id = res.session.id;
+        console.log(res.session.id);
         stripe?.redirectToCheckout({
           sessionId: res.id,
->>>>>>> 3f70613 (First commit)
         });
       });
   }

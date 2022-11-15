@@ -11,6 +11,7 @@ export class S3serviceService {
   }
 
   async uploadS3(file, bucket, name) {
+    // ONLY WORKS WITH JPEG
     const contentType = file.type;
     const s3 = this.getS3();
     const params = {
@@ -18,7 +19,7 @@ export class S3serviceService {
       Key: String(name),
       Body: file,
       ACL: 'public-read',
-      ContentType: contentType,
+      ContentType: 'image/jpeg',
     };
     return new Promise((resolve, reject) => {
       s3.upload(params, (err, data) => {

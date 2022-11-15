@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Charity, Item } from '@charity-app-production/api-interfaces';
 import { CharitiesApiService } from '../utils/charities-api.service';
 import { CurrentUserService } from '../utils/current-user.service';
-import { ItemsService } from '../utils/items.service';
+import { StripeService } from '../utils/stripe.service';
 
 @Component({
   selector: 'charity-app-production-donate-cart',
@@ -19,7 +19,8 @@ export class DonateCartComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private api: CharitiesApiService,
-    private user: CurrentUserService
+    private user: CurrentUserService,
+    private stripe: StripeService
   ) {}
 
   loadCharity() {
@@ -39,12 +40,11 @@ export class DonateCartComponent implements OnInit {
     });
   }
   checkOut() {
+    this.stripe.cartCheckout(this.cart);
     this.user.removeAllItem().subscribe((data) => {
       this.user.currentUser.cart = [...data];
       this.cart = [...data];
     });
-
-    this.router.navigate(['thank-you']);
   }
   ngOnInit(): void {
     this.loadCharity();
