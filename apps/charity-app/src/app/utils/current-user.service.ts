@@ -41,13 +41,6 @@ export class CurrentUserService {
     return cart
       ? (this.currentUser.cart = [...cart])
       : (this.currentUser.cart = []);
-    console.log('Promise', cart);
-    return cart;
-    // return this.getCart().subscribe((data) => {
-    //   // console.log(this.currentUser.cart);
-    //   console.log('IF data', (this.currentUser.cart = [...data]));
-    //   console.log('else', (this.currentUser.cart = []));
-    // });
   }
 
   // add/Remove Items to cart

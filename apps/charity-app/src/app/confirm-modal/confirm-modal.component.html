@@ -1,0 +1,9 @@
+<div class="modal">
+  <div class="block">
+    <h3 mat-dialog-title>Delete the item from the cart ?</h3>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button color="warn" [mat-dialog-close]="true">Remove</button>
+  </div>
+</div>

@@ -1,12 +1,16 @@
 <charity-app-production-nav-bar></charity-app-production-nav-bar>
 <div class="container">
+  <div class="message">
+    <h1>Choose a charity</h1>
+  </div>
   <form (ngSubmit)="submit(f)" #f="ngForm" class="search">
+    <mat-icon>search</mat-icon>
     <mat-form-field appearance="outline" class="field">
       <input
         [(ngModel)]="formValue"
         (ngModelChange)="checkValidity($event)"
         type="text"
-        placeholder="Search a charity..."
+        placeholder="Search charity..."
         matInput
         name="search"
         [matAutocomplete]="auto"

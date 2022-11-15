@@ -26,6 +26,7 @@ import { ShopItemComponent } from './shop-item/shop-item.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
     CartItemComponent,
     NavBarComponent,
     SearchPageComponent,
+    ConfirmModalComponent,
   ],
   imports: [
     BrowserModule,

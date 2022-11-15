@@ -23,16 +23,17 @@ h3{
   font-weight: bolder;
 
 }
-.price{
-  color: var(--primary);
+::ng-deep .mat-dialog-container{
+  background-color:var(--secondary-background);
 }
-
-
 @media screen and (min-width: 480px) {
   .text {
     display: flex ;
     gap :2em;
     align-items: center;
+  }
+  ::ng-deep .cdk-overlay-pane{
+   transform: scale(1.5);
   }
 
 }

@@ -13,7 +13,8 @@
 .button {
   background-color: var(--primary);
   width: 60%;
-
+  color: white;
+  font-size: 1em;
 }
 .container {
   background-color: var(--secondary-background);
@@ -53,5 +54,11 @@
     margin-left : 25%;
     width: 50%;
 
+  }
+  .button {
+    background-color: var(--primary);
+    width: 40%;
+    color: white;
+    font-size: 1em;
   }
 }

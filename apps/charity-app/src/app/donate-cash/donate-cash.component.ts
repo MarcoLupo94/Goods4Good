@@ -15,4 +15,7 @@ export class DonateCashComponent {
   setValue(event: number) {
     this.value = event;
   }
+  onCheckout(): void{
+
+  }
 }

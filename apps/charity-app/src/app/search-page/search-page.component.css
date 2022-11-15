@@ -3,13 +3,22 @@
   height: 100%;
   color: white;
 }
+.message {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
 .search{
   padding: 1em;
   margin: 1em;
   display: flex;
   justify-content: center;
-  align-items: center;
-
+  align-items: baseline
+}
+mat-icon {
+  color: var(--primary);
+  transform: scale(1.2);
+  margin-right : 0.5em;
 }
 .field {
   max-width: 500px;

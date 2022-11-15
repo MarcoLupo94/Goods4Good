@@ -31,7 +31,6 @@ export class NavBarComponent implements OnInit {
       .setUser()
       .then((data) => {
         this.cart = [...data];
-        console.log(this.cart);
       })
       .catch((e) => console.log(e));
   }
