@@ -1,7 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { loadStripe } from '@stripe/stripe-js';
+<<<<<<< HEAD
+import { Item } from '@charity-app-production/api-interfaces';
 import { environment } from '../../environments/environment';
+import { loadStripe } from '@stripe/stripe-js';
+=======
+import { Item } from '@charity-app-production/api-interfaces';
+import { environment } from '../../environments/environment';
+import { loadStripe } from '@stripe/stripe-js';
+>>>>>>> 3f70613 (First commit)
 
 @Injectable({
   providedIn: 'root',
@@ -9,13 +16,27 @@ import { environment } from '../../environments/environment';
 export class StripeService {
   constructor(private http: HttpClient) {}
 
-  checkout(items: Item[]): void {
+<<<<<<< HEAD
+cartCheckout(cart: Item[]): void {
+  this.http
+    .post(environment.API_DB + 'checkout', {
+      items: cart,
+    })
+    .subscribe(async (res: any) => {
+      const stripe = await loadStripe(environment.STRIPE_KEY);
+      stripe?.redirectToCheckout({
+        sessionId: res.id,
+=======
+  cartCheckout(cart: Item[]): void {
     this.http
-      .post(environment.API_DB, items + '/checkout')
+      .post(environment.API_DB + 'checkout', {
+        items: cart,
+      })
       .subscribe(async (res: any) => {
         const stripe = await loadStripe(environment.STRIPE_KEY);
         stripe?.redirectToCheckout({
-          sessionId: res._id,
+          sessionId: res.id,
+>>>>>>> 3f70613 (First commit)
         });
       });
   }
