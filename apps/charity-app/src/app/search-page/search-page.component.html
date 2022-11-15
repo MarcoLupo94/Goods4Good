@@ -3,8 +3,7 @@
   <div class="message">
     <h1>Choose a charity</h1>
   </div>
-  <form (ngSubmit)="submit(f)" #f="ngForm" class="search">
-    <mat-icon>search</mat-icon>
+  <form #f="ngForm" class="search">
     <mat-form-field appearance="outline" class="field">
       <input
         [(ngModel)]="formValue"
@@ -21,11 +20,11 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <button type="submit" hidden [disabled]="formDisabled"></button>
+    <mat-icon>search</mat-icon>
   </form>
   <div class="banners">
     <charity-app-production-charity-card
-      *ngFor="let charity of charities"
+      *ngFor="let charity of currentSearch"
       [charity]="charity"
     ></charity-app-production-charity-card>
   </div>

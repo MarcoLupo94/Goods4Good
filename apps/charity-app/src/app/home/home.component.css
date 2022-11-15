@@ -13,7 +13,7 @@
   align-items: end;
   justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  padding: 0.5em;
+  padding: 0.5em
 }
 .hero{
   display: flex;

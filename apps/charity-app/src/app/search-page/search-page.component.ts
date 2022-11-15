@@ -11,6 +11,7 @@ import { CurrentUserService } from '../utils/current-user.service';
 })
 export class SearchPageComponent implements OnInit {
   charities: Charity[] = [];
+  currentSearch: Charity[] = [];
   user!: User;
   options: string[] = [];
   formValue = '';
@@ -22,23 +23,18 @@ export class SearchPageComponent implements OnInit {
     private router: Router
   ) {}
   checkValidity(event: string) {
-    if (this.options.find((el) => el.toLowerCase() === event.toLowerCase())) {
-      this.formDisabled = false;
-    } else {
-      this.formDisabled = true;
-    }
-  }
-  submit(form: NgForm) {
-    const _id = this.charities.find(
-      (el) => el.name.toLowerCase() === form.value.search.toLowerCase()
-    )?._id;
-    this.router.navigate(['charity-page/', _id]);
+    this.currentSearch = this.charities.filter((charity) => {
+      if (event === '') return this.charities;
+      return charity.name.toLowerCase().includes(event.toLowerCase());
+    });
   }
   ngOnInit(): void {
     this.userService
       .setUser()
       .then(() => {
-        this.charities = [...this.api.db].sort(() => 0.5 - Math.random());
+        this.charities = this.currentSearch = [...this.api.db].sort(
+          () => 0.5 - Math.random()
+        );
         this.options = this.charities.map((el) => el.name).sort();
         this.user = this.userService.currentUser;
       })

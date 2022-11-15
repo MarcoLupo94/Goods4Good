@@ -9,16 +9,8 @@
   margin-top: 2em;
 }
 .search{
-  padding: 1em;
-  margin: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: baseline
-}
-mat-icon {
-  color: var(--primary);
-  transform: scale(1.2);
-  margin-right : 0.5em;
+  transform: scale(1.6);
+  margin-left : 0.5em;
 }
 .field {
   max-width: 500px;
