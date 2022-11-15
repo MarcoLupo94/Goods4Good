@@ -9,13 +9,21 @@
   margin-top: 2em;
 }
 .search{
-  transform: scale(1.6);
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+mat-icon {
+  transform: scale(1.7);
   margin-left : 0.5em;
+  color: var(--primary);
+
 }
 .field {
   max-width: 500px;
-  width: 80%;
-  height: 90%;
+  width: 60%;
+  height: 80%;
 }
 .banners {
   display: grid;
