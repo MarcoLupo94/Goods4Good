@@ -1,36 +1,30 @@
 <charity-app-production-nav-bar></charity-app-production-nav-bar>
 <div class="body">
-  <charity-app-production-page-navigation
-    pageName="Donate Clothes"
-  ></charity-app-production-page-navigation>
-  <h3>Donate an Item</h3>
+  <charity-app-production-page-navigation></charity-app-production-page-navigation>
+  <div class="hero">
+    <h1>Donate an Item</h1>
+  </div>
   <div class="container">
     <form #f="ngForm" class="form" (ngSubmit)="handleSubmit(f)">
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Item title</mat-label>
-          <input matInput placeholder="name" ngModel name="title" required />
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>£ Price</mat-label>
-          <input
-            matInput
-            type="number"
-            placeholder="0.00"
-            ngModel
-            name="price"
-            required
-          />
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Item size</mat-label>
-          <input matInput placeholder="S/M/L" ngModel name="size" required />
-        </mat-form-field>
-      </p>
+      <mat-form-field appearance="outline">
+        <mat-label>Item title</mat-label>
+        <input matInput placeholder="name" ngModel name="title" required />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>£ Price</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="0.00"
+          ngModel
+          name="price"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Item size</mat-label>
+        <input matInput placeholder="S/M/L" ngModel name="size" required />
+      </mat-form-field>
       <button
         type="button"
         mat-raised-button
@@ -62,19 +56,17 @@
         <img class="image" src="{{ imgUrl }}" alt="item Image" />
       </div>
 
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Item informations</mat-label>
-          <textarea
-            matInput
-            placeholder="Description..."
-            ngModel
-            name="description"
-            required
-          ></textarea>
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        </mat-form-field>
-      </p>
+      <mat-form-field appearance="outline">
+        <mat-label>Item informations</mat-label>
+        <textarea
+          matInput
+          placeholder="Description..."
+          ngModel
+          name="description"
+          required
+        ></textarea>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
       <button
         class="submit"
         mat-button

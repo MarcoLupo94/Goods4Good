@@ -6,23 +6,23 @@
 .form {
   display: flex;
   flex-direction: column;
-}
-@media screen and (min-width: 480px) {
-  .form{
-    align-items: center
-  }
-  .img-preview-container{
-    margin-left :35%;
-  }
-}
+  align-items: center
 
 
+}
+.hero {
+  display: flex;
+  justify-content: center;
+}
+.img-preview-container{
+  margin-left :35%;
+  margin-bottom: 1em;
+}
 .image{
   max-width: 40%;
   max-height: 20%;
   display:block;
   border-radius: 5px;
-
 }
 .submit{
   background-color: var(--primary);
@@ -30,6 +30,8 @@
 }
 .file-uploader {
   background-color: var(--primary);
+  width: 50%;
+  margin: 1em;
 }
 
 /* NUMBER INPUT REMOVE ARROWS */
@@ -55,4 +57,24 @@ input[type=number] {
 }
 
 
+@media screen and (min-width: 480px) {
+
+  .form > mat-form-field {
+    width: 30%;
+    height: 20%;
+    align-items: center
+  }
+  .img-preview-container{
+    margin-left :37%;
+  }
+  .submit{
+    width: 40%;
+  }
+  .file-uploader {
+    width: 20%;
+  }
+  .submit{
+    width: 30%;
+  }
+}
 

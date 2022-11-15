@@ -12,7 +12,6 @@
 }
 .shop {
   color : var(--primary);
-  background-color: var(--button-background);
 }
 .title {
   display: flex;
@@ -33,13 +32,12 @@
 
 }
 .description {
-  display: flex;
-  flex-direction: column;
+
   margin: 2em;
   margin-top : 0em;
   padding: 1em;
   padding-top : 0em;
-  background-color: var(--secondary-background);
+  background-color: var(--button-background);
 
 }
 
@@ -48,6 +46,11 @@
     margin-left : 25%;
     width: 50%;
     background-color: var(--secondary-background);
+
+  }
+  .buttons > button {
+    background-color: #1AB75D;
+    width: 30%;
 
   }
 }

@@ -1,8 +1,6 @@
 GOODS 4 GOOD
-description
-
-MVP
-descr
+It's a web application where User con find charity fundraiser and pages.
+They we'll be able to donate cash, clothes or by buying on the shop.
 
 Tech stack
 Front End:
@@ -13,4 +11,4 @@ Back End:
 Nestjs + MongoDB
 
 Data sources
-api link
+(https://www.every.org/) for finding charities and fundraisers
