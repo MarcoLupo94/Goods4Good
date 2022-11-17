@@ -8,7 +8,7 @@ import { charity, CharityDocument } from './charities.schema';
 export class CharitiesService {
   constructor(
     @InjectModel(charity.name) private CharityModel: Model<CharityDocument>
-  ) {}
+  ) { }
 
   async create(newCharity: Charity | Charity[]) {
     return await this.CharityModel.create(newCharity);
@@ -27,3 +27,5 @@ export class CharitiesService {
     return await this.CharityModel.create(updatedCharity);
   }
 }
+
+/* test */
