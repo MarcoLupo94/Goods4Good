@@ -35,7 +35,7 @@ describe('charity-app', () => {
       //cy.visit('http://localhost:4200/home')
       check = $title.text();
     });
-
+    cy.wait(1500);
   });
 
 });
@@ -53,7 +53,7 @@ describe('Random data loading', () => {
       expect($title.text()).not.equal(check);
 
     });
-
+    cy.wait(1500);
   });
 
 
@@ -67,10 +67,38 @@ describe('Search page', () => {
 
     cy.get(".mat-button-wrapper").click();
     cy.get('button[name=searchbutton]').click();
+    cy.wait(1500);
     cy.get('input[name=search]').type('Climate Central');
+    cy.wait(150);
     cy.get('.mat-card').should('have.length', 1);
 
   });
+});
 
+describe('Pick a charity and donate clothes', () => {
+
+  //before(() => cy.visit('http://localhost:4200'));
+
+  it('Go to "Climate Central" page', () => {
+
+    cy.get('.mat-card-content').first().find('h3').then(($title) => {
+      expect($title.text()).to.equal('Climate Central');
+    });
+
+    cy.get('.mat-card-content').first().find('h2').click();
+    cy.wait(1500);
+  });
+
+  it('Go to "Climate Central" clothes donation form', () => {
+
+    cy.get('.buttons').contains('Donate Clothes').click();
+    cy.wait(1500);
+  });
+
+  it('Upload an image', () => {
+
+    cy.get('input[type=file]').selectFile('C:\\Users\\fabtr\\codeworks\\WEEK7\\charity-app\\apps\\charity-app-e2e\\src\\data\\test.jpg', { force: true });
+    cy.wait(1500);
+  });
 
 });
