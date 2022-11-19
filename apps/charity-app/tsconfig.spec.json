@@ -8,3 +8,20 @@
   "files": ["src/test-setup.ts"],
   "include": ["jest.config.ts", "**/*.test.ts", "**/*.spec.ts", "**/*.d.ts"]
 }
+// {
+//   "extends": "./tsconfig.json",
+//   "compilerOptions": {
+//     "outDir": "./out-tsc/spec",
+//     "module": "CommonJs",
+//     "types": ["jest"]
+//   },
+//   "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
+// }
+// {
+//   "extends": "./tsconfig.json",
+//   "compilerOptions": {
+//     "outDir": "./out-tsc/spec",
+//     "types": ["jasmine"]
+//   },
+//   "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
+// }
