@@ -173,6 +173,8 @@ describe.only('charity-app AUTHENTICATED', () => {
   //   });
   // });
 
+  //////////////////////////////////////////////////////////////
+
   // describe('Feature: donate money - predefined', () => {
   //   describe('Search page', () => {
   //     // before(() => cy.visit('http://localhost:4200'));
@@ -216,22 +218,61 @@ describe.only('charity-app AUTHENTICATED', () => {
   //   });
   // });
 
-  describe('Feature: home button', () => {
-    it('Navigate to shopping bag page', () => {
-      cy.get('[data-mat-icon-name="shopping_cart"]').click();
-      cy.url().should('contain', 'cart');
-      cy.wait(1000);
-    });
+  //////////////////////////////////////////////////////////////
 
-    it('Should have the home button rendered', () => {
-      cy.get('.left').contains('GOODS 4 GOOD');
-      cy.wait(1000);
-    });
+  // describe('Feature: home button', () => {
+  //   it('Navigate to shopping bag page', () => {
+  //     cy.get('[data-mat-icon-name="shopping_cart"]').click();
+  //     cy.url().should('contain', 'cart');
+  //     cy.wait(1000);
+  //   });
 
-    it('Home button should navigate back to home when clicked', () => {
-      cy.get('.left').contains('GOODS 4 GOOD').click();
-      cy.url().should('contain', 'home');
-      cy.wait(1000);
+  //   it('Should have the home button rendered', () => {
+  //     cy.get('.left').contains('GOODS 4 GOOD');
+  //     cy.wait(1000);
+  //   });
+
+  //   it('Home button should navigate back to home when clicked', () => {
+  //     cy.get('.left').contains('GOODS 4 GOOD').click();
+  //     cy.url().should('contain', 'home');
+  //     cy.wait(1000);
+  //   });
+  // });
+
+  //////////////////////////////////////////////////////////////
+
+  describe('Feature: add item to cart', () => {
+    describe('Navigate to charity page', () => {
+      it('Search and display result', () => {
+        cy.get('button[name=searchbutton]').click();
+        cy.get('input[name=search]').type('Climate Change Fund');
+        cy.get('.mat-card').should('have.length', 11);
+        cy.wait(1000);
+      });
+
+      it('Go to charity page', () => {
+        cy.get('.mat-card-content')
+          .first()
+          .find('h3')
+          .then(($title) => {
+            expect($title.text()).not.equal('');
+          });
+
+        cy.get('.mat-card-content').first().find('h2').click();
+        cy.wait(1000);
+      });
+
+      it('Click view items button', () => {
+        cy.get(
+          '[class="mat-focus-indicator shop mat-icon-button mat-button-base"]'
+        ).click();
+        cy.wait(1000);
+      });
+
+      it('Be directed to the shop page', () => {
+        cy.url().should('contain', 'shop');
+        cy.wait(1000);
+      });
     });
   });
 });
