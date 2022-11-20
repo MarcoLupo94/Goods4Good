@@ -184,5 +184,34 @@ describe.only('charity-app AUTHENTICATED', () => {
         cy.wait(1500);
       });
     });
+
+    describe('Pick a charity and donate money', () => {
+      it('Go to charity page', () => {
+        cy.get('.mat-card-content')
+          .first()
+          .find('h3')
+          .then(($title) => {
+            expect($title.text()).not.equal('');
+          });
+
+        cy.get('.mat-card-content').first().find('h2').click();
+        cy.wait(1500);
+      });
+
+      it('Go to the charity money donation form', () => {
+        cy.get('.mat-button').contains('Donate').click();
+        cy.wait(1500);
+      });
+
+      it('Select a pre-defined amount of money to donate', () => {
+        cy.get('mat-chip').contains('25').click();
+        cy.wait(1500);
+      });
+
+      it('Donation amount should match the amount clicked', () => {
+        cy.get('input[name=Donation]').should('have.value', '25');
+        cy.wait(1500);
+      });
+    });
   });
 });
