@@ -1,3 +1,4 @@
+import { IterableDiffers } from '@angular/core';
 import { getGreeting } from '../support/app.po';
 
 var check = '';
@@ -172,46 +173,65 @@ describe.only('charity-app AUTHENTICATED', () => {
   //   });
   // });
 
-  describe('Feature: donate money - predefined', () => {
-    describe('Search page', () => {
-      // before(() => cy.visit('http://localhost:4200'));
+  // describe('Feature: donate money - predefined', () => {
+  //   describe('Search page', () => {
+  //     // before(() => cy.visit('http://localhost:4200'));
 
-      it('Search and display result', () => {
-        // cy.get('.mat-button-wrapper').click();
-        cy.get('button[name=searchbutton]').click();
-        cy.get('input[name=search]').type('Climate Change Fund');
-        cy.get('.mat-card').should('have.length', 11);
-        cy.wait(1500);
-      });
+  //     it('Search and display result', () => {
+  //       // cy.get('.mat-button-wrapper').click();
+  //       cy.get('button[name=searchbutton]').click();
+  //       cy.get('input[name=search]').type('Climate Change Fund');
+  //       cy.get('.mat-card').should('have.length', 11);
+  //       cy.wait(1500);
+  //     });
+  //   });
+
+  //   describe('Pick a charity and donate money', () => {
+  //     it('Go to charity page', () => {
+  //       cy.get('.mat-card-content')
+  //         .first()
+  //         .find('h3')
+  //         .then(($title) => {
+  //           expect($title.text()).not.equal('');
+  //         });
+
+  //       cy.get('.mat-card-content').first().find('h2').click();
+  //       cy.wait(1500);
+  //     });
+
+  //     it('Go to the charity money donation form', () => {
+  //       cy.get('.mat-button').contains('Donate').click();
+  //       cy.wait(1500);
+  //     });
+
+  //     it('Select a pre-defined amount of money to donate', () => {
+  //       cy.get('mat-chip').contains('25').click();
+  //       cy.wait(1500);
+  //     });
+
+  //     it('Donation amount should match the amount clicked', () => {
+  //       cy.get('input[name=Donation]').should('have.value', '25');
+  //       cy.wait(1500);
+  //     });
+  //   });
+  // });
+
+  describe('Feature: home button', () => {
+    it('Navigate to shopping bag page', () => {
+      cy.get('[data-mat-icon-name="shopping_cart"]').click();
+      cy.url().should('contain', 'cart');
+      cy.wait(1000);
     });
 
-    describe('Pick a charity and donate money', () => {
-      it('Go to charity page', () => {
-        cy.get('.mat-card-content')
-          .first()
-          .find('h3')
-          .then(($title) => {
-            expect($title.text()).not.equal('');
-          });
+    it('Should have the home button rendered', () => {
+      cy.get('.left').contains('GOODS 4 GOOD');
+      cy.wait(1000);
+    });
 
-        cy.get('.mat-card-content').first().find('h2').click();
-        cy.wait(1500);
-      });
-
-      it('Go to the charity money donation form', () => {
-        cy.get('.mat-button').contains('Donate').click();
-        cy.wait(1500);
-      });
-
-      it('Select a pre-defined amount of money to donate', () => {
-        cy.get('mat-chip').contains('25').click();
-        cy.wait(1500);
-      });
-
-      it('Donation amount should match the amount clicked', () => {
-        cy.get('input[name=Donation]').should('have.value', '25');
-        cy.wait(1500);
-      });
+    it('Home button should navigate back to home when clicked', () => {
+      cy.get('.left').contains('GOODS 4 GOOD').click();
+      cy.url().should('contain', 'home');
+      cy.wait(1000);
     });
   });
 });
