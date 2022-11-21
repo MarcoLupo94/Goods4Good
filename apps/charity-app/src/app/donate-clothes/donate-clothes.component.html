@@ -37,7 +37,8 @@
         <textarea matInput placeholder="Description..." ngModel name="description" required></textarea>
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       </mat-form-field>
-      <button class="submit" mat-button type="submit" [disabled]="!f.valid || selectedFile.status !== 'ok'">
+      <button class="submit" name="item_submit" mat-button type="submit"
+        [disabled]="!f.valid || selectedFile.status !== 'ok'">
         Donate
       </button>
     </form>

@@ -20,7 +20,7 @@ export class ItemsController {
   @Post()
   create(@Body() item: Item) {
     try {
-      /* - Adding validation for price - */
+      /* - Adding validation for price and escaping for all string inputs- */
       function escapeAll(object) {
         Object.keys(object).forEach(function (k) {
           if (typeof object[k] === 'string' && k !== 'img_url') {
