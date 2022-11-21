@@ -6,7 +6,7 @@ import { lastValueFrom, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CurrentUserService {
   constructor(private auth: AuthService, private http: HttpClient) {
@@ -21,6 +21,7 @@ export class CurrentUserService {
     picture: '',
     cart: [],
     donations: [],
+    favoriteIds: []
   };
   user: any;
 
@@ -67,6 +68,17 @@ export class CurrentUserService {
     this.currentUser.cart = [];
     return this.http.delete<Item[]>(
       environment.API_DB + 'users/' + this.currentUser._id
+    );
+  }
+
+  // Add charity to favorites
+  addToFavorites(favoriteCharityId: String): Observable<String> {
+    return this.http.post<String>(
+      environment.API_DB +
+        'users/' +
+        this.currentUser._id +
+        `/${favoriteCharityId}`,
+      favoriteCharityId
     );
   }
 }
