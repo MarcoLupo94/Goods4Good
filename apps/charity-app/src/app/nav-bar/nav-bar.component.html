@@ -6,12 +6,19 @@
     <h4>GOODS 4 GOOD</h4>
   </div>
   <div class="left right">
+    <charity-app-production-favorites-button
+      [routerLink]="['', 'favorites']"
+    ></charity-app-production-favorites-button>
     <button mat-icon-button name="searchbutton" [routerLink]="['', 'search']">
       <mat-icon>search</mat-icon>
     </button>
     <button class="cart" mat-button [routerLink]="['', 'cart']">
-      <mat-icon fontIcon="shopping_cart" matBadgeColor="warn" matBadge="{{ cart?.length }}"
-        [matBadgeHidden]="cart?.length === 0"></mat-icon>
+      <mat-icon
+        fontIcon="shopping_cart"
+        matBadgeColor="warn"
+        matBadge="{{ cart?.length }}"
+        [matBadgeHidden]="cart?.length === 0"
+      ></mat-icon>
     </button>
     <button class="logout" mat-button (click)="logout()">
       <mat-icon fontIcon="exit_to_app"></mat-icon>

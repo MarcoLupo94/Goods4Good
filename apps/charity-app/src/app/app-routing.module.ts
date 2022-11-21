@@ -11,6 +11,7 @@ import { DonateCashComponent } from './donate-cash/donate-cash.component';
 import { DonateClothesComponent } from './donate-clothes/donate-clothes.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { FavoritesPageComponent } from './Favorites/favorites-page/favorites-page.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -29,17 +30,18 @@ const routes: Routes = [
         component: DonateComponent,
         children: [
           { path: 'cart', component: DonateCartComponent, outlet: 'secondary' },
-          { path: 'cash', component: DonateCashComponent, outlet: 'secondary' },
-        ],
+          { path: 'cash', component: DonateCashComponent, outlet: 'secondary' }
+        ]
       },
-      { path: ':id/donate-clothes', component: DonateClothesComponent },
-    ],
+      { path: ':id/donate-clothes', component: DonateClothesComponent }
+    ]
   },
-  { path: 'thank-you', component: ThankYouComponent },
+  { path: 'favorites', component: FavoritesPageComponent },
+  { path: 'thank-you', component: ThankYouComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}
