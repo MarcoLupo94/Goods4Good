@@ -1,3 +1,4 @@
+import validator from "validator";
 import { Donation } from '@charity-app-production/api-interfaces';
 import {
   Body,
@@ -13,7 +14,7 @@ import { HttpStatus } from '@nestjs/common';
 // CHECK https://docs.nestjs.com/exception-filters for error handling
 @Controller('donations')
 export class DonationsController {
-  constructor(private readonly donationsService: DonationsService) {}
+  constructor(private readonly donationsService: DonationsService) { }
 
   @Post()
   async create(@Body() donation: Donation) {
