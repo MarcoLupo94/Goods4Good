@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AuthService } from '@auth0/auth0-angular';
 import { ShopItemComponent } from './shop-item.component';
 
 describe('ShopItemComponent', () => {
@@ -9,6 +9,7 @@ describe('ShopItemComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ShopItemComponent],
+      imports: [AuthService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ShopItemComponent);
