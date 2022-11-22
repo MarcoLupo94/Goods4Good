@@ -5,12 +5,10 @@
   </div>
   <div class="banners">
     <charity-app-production-charity-card
+      *ngFor="let charity of favoriteCharities"
+      [charity]="charity"
       class="banner"
+      (favoriteCharitiesChanged)="favCharityChangeEvent($event)"
     ></charity-app-production-charity-card>
   </div>
 </div>
-
-<!--
-      *ngFor="let favoriteCharity of favoriteCharities"
-
-    > -->

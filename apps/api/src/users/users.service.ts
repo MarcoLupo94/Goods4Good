@@ -1,4 +1,4 @@
-import { Item, User } from '@charity-app-production/api-interfaces';
+import { Item, User, Charity } from '@charity-app-production/api-interfaces';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -79,24 +79,70 @@ export class UsersService {
     }
   }
 
-  async addFavorite(userId: string, charityId: string) {
+  async addFavorite(userId: string, charityId: string, charity: Charity) {
     try {
       // Get the current user
       const user = await (
         await this.userModel.findById(userId)
-      ).populate('favoriteIds');
+      ).populate('favoriteCharities');
 
       // Check if the charity ID already exists in the favorite IDs array
-      const charityAlreadyFavorite = user.favoriteIds.includes(charityId);
-
+      const charityAlreadyFavorite = user.favoriteCharities.some(
+        (favoriteCharity) => {
+          if (favoriteCharity._id === charityId) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      );
+      // throw new Error('Test favorite error');
       if (charityAlreadyFavorite) {
         await user.save();
         return user;
       } else {
-        user.favoriteIds.push(charityId);
+        user.favoriteCharities.push(charity);
         await user.save();
         return user;
       }
+    } catch (error) {
+      console.log(error);
+      return { errorMessage: 'There was an error in adding a favorite' };
+    }
+  }
+
+  // async removeFromCart(_id: string, itemId: string) {
+  //   try {
+  //     const user = await this.userModel.findById(_id).populate('cart');
+  //     const indexToRemove = user.cart.indexOf(itemId);
+  //     user.cart.splice(indexToRemove, 1);
+  //     await user.save();
+  //     return await this.itemModel.find({
+  //       _id: { $in: user.cart },
+  //     });
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
+
+  async removeFavorite(charityId: string, userId: string) {
+    try {
+      const user = await this.userModel
+        .findById(userId)
+        .populate('favoriteCharities');
+
+      const targetCharity = user.favoriteCharities.find((favoriteCharity) => {
+        return favoriteCharity._id === charityId;
+      });
+      const targetCharityIndex = user.favoriteCharities.indexOf(targetCharity);
+
+      console.log(user.favoriteCharities, 'list of favorite charities');
+
+      user.favoriteCharities.splice(targetCharityIndex, 1);
+
+      console.log(user.favoriteCharities, 'new favorite charities list');
+      await user.save();
+      return user;
     } catch (error) {
       console.log(error);
     }

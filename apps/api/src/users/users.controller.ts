@@ -23,7 +23,11 @@ export class UsersController {
 
   @Post('favorites')
   addToFavorites(@Body() body: Favorite) {
-    return this.usersService.addFavorite(body.userId, body.charityId);
+    return this.usersService.addFavorite(
+      body.userId,
+      body.charityId,
+      body.charity
+    );
   }
 
   // @Get()
@@ -76,6 +80,26 @@ export class UsersController {
         {
           status: HttpStatus.NOT_MODIFIED,
           error: 'NOT_MODIFIED',
+        },
+        HttpStatus.NOT_MODIFIED,
+        {
+          cause: error,
+        }
+      );
+    }
+  }
+
+  @Patch('remove-favorite/:charityId')
+  removeFavorite(@Param('charityId') charityId: string, @Body() body) {
+    try {
+      const { userId } = body;
+
+      return this.usersService.removeFavorite(charityId, userId);
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_MODIFIED,
+          error: 'FAVORITE_NOT_REMOVED',
         },
         HttpStatus.NOT_MODIFIED,
         {

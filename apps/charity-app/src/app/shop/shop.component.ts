@@ -8,7 +8,7 @@ import { ItemsService } from '../utils/items.service';
 @Component({
   selector: 'charity-app-production-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.css'],
+  styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
   charity: Charity | undefined;
@@ -40,7 +40,6 @@ export class ShopComponent implements OnInit {
       .setUser()
       .then((data) => {
         this.cart = [...data];
-        console.log(this.cart);
       })
       .catch((e) => console.log(e));
     this.loadCharity();

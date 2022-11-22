@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CurrentUserService } from '../utils/current-user.service';
 import { Charity } from '@charity-app-production/api-interfaces';
 import { Router } from '@angular/router';
@@ -10,29 +10,51 @@ import { Router } from '@angular/router';
 })
 export class CharityCardComponent {
   constructor(private router: Router, private user: CurrentUserService) {}
+  charityIsFavorite: boolean = false;
+
   @Input()
   charity!: Charity;
+
+  @Output()
+  favoriteCharitiesChanged = new EventEmitter();
+
+  listenFavCharityChangeEvent() {
+    this.favoriteCharitiesChanged.emit(this.user.currentUser.favoriteCharities);
+  }
 
   navigate() {
     this.router.navigate(['charity-page/', this.charity._id]);
   }
   addCharityToFavorites() {
-    const favoriteCharityId = this.charity._id;
-    this.user.addToFavorites(favoriteCharityId).subscribe((data) => {
-      this.user.currentUser = { ...data };
-      console.log(this.user.currentUser, 'updated user');
-    });
+    const favoriteCharity = this.charity;
+
+    if (this.charityIsFavorite) {
+      this.user.removeFromFavorites(favoriteCharity).subscribe((data) => {
+        console.log(data, 'remove favorite result');
+      });
+
+      this.charityIsFavorite = false;
+
+      this.favoriteCharitiesChanged.emit(this.charity._id);
+    } else {
+      this.user.addToFavorites(favoriteCharity).subscribe((data) => {
+        this.user.currentUser = { ...data };
+      });
+      this.charityIsFavorite = true;
+    }
   }
 
   ngOnInit(): void {
     // Does this charity id match any in the users favorite charity ids array
-    this.user.currentUser.favoriteIds.some((favoriteId) => {
-      if (favoriteId === this.charity._id) {
-        console.log(this.charity, 'charity is favorited');
-        return true;
-      } else {
-        return false;
-      }
-    });
+    if (this.charity) {
+      this.user.currentUser.favoriteCharities.some((favoriteCharity) => {
+        if (favoriteCharity._id === this.charity._id) {
+          this.charityIsFavorite = true;
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
   }
 }

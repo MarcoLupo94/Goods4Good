@@ -7,12 +7,13 @@ export interface User {
   picture: string;
   cart: Item[];
   donations: Donation[];
-  favoriteIds: String[];
+  favoriteCharities: Charity[];
 }
 
 export interface Favorite {
   userId: string;
   charityId: string;
+  charity: Charity;
 }
 
 export interface Charity {

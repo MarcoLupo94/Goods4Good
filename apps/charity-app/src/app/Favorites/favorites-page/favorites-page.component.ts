@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrentUserService } from '../../utils/current-user.service';
+import {
+  User,
+  Favorite,
+  Charity
+} from '@charity-app-production/api-interfaces';
 
 @Component({
   selector: 'charity-app-production-favorites-page',
@@ -6,7 +12,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favorites-page.component.css']
 })
 export class FavoritesPageComponent implements OnInit {
-  constructor() {}
+  constructor(private user: CurrentUserService) {}
 
-  ngOnInit(): void {}
+  favoriteCharities: Charity[] = [];
+
+  favCharityChangeEvent(event: any) {
+    const filteredFavCharities = this.favoriteCharities.filter(
+      (favoriteCharity) => {
+        if (favoriteCharity._id !== event) {
+          return favoriteCharity;
+        } else {
+          return false;
+        }
+      }
+    );
+    this.favoriteCharities = filteredFavCharities;
+    console.log(this.favoriteCharities);
+  }
+
+  ngOnInit(): void {
+    this.favoriteCharities = this.user.currentUser.favoriteCharities;
+  }
 }
