@@ -4,13 +4,18 @@ var check = '';
 
 describe('charity-app', () => {
   /* beforeEach(() => cy.visit('http://localhost:4200')); */
-  before(() => cy.visit('http://localhost:4200'));
+  /*  before(() => {
+     cy.clearCookies();
+     cy.clearLocalStorage();
+   }); */
   /*   it('should display welcome message', () => {
       cy.get(".mat-button-wrapper").contains("Get Started");
     }); */
 
   it('Landing page should have log in button', () => {
-
+    cy.clearCookies();
+    cy.clearLocalStorage();
+    cy.visit('http://localhost:4200');
     cy.get(".mat-button-wrapper").click();
     cy.url().should('contain', "dev-msv6b2s82hv7ytey.us.auth0.com");
     console.log("current URL:", cy.url());
