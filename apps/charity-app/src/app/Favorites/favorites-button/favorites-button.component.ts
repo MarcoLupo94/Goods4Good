@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'charity-app-production-favorites-button',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritesButtonComponent implements OnInit {
   constructor() {}
+
+  @Input() isFavorite = false;
 
   ngOnInit(): void {}
 }

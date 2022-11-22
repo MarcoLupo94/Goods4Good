@@ -88,7 +88,7 @@ export class UsersService {
 
       // Check if the charity ID already exists in the favorite IDs array
       const charityAlreadyFavorite = user.favoriteIds.includes(charityId);
-
+      // throw new Error('Test favorite error');
       if (charityAlreadyFavorite) {
         await user.save();
         return user;
@@ -99,6 +99,7 @@ export class UsersService {
       }
     } catch (error) {
       console.log(error);
+      return { errorMessage: 'There was an error in adding a favorite' };
     }
   }
 }

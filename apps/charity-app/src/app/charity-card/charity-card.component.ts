@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class CharityCardComponent {
   constructor(private router: Router, private user: CurrentUserService) {}
+  charityIsFavorite: boolean = false;
+
   @Input()
   charity!: Charity;
 
@@ -20,7 +22,7 @@ export class CharityCardComponent {
     const favoriteCharityId = this.charity._id;
     this.user.addToFavorites(favoriteCharityId).subscribe((data) => {
       this.user.currentUser = { ...data };
-      console.log(this.user.currentUser, 'updated user');
+      this.charityIsFavorite = true;
     });
   }
 
@@ -28,7 +30,7 @@ export class CharityCardComponent {
     // Does this charity id match any in the users favorite charity ids array
     this.user.currentUser.favoriteIds.some((favoriteId) => {
       if (favoriteId === this.charity._id) {
-        console.log(this.charity, 'charity is favorited');
+        this.charityIsFavorite = true;
         return true;
       } else {
         return false;

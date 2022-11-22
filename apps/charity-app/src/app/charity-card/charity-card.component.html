@@ -13,6 +13,7 @@
       </button>
       <charity-app-production-favorites-button
         (click)="addCharityToFavorites()"
+        [isFavorite]="charityIsFavorite"
       ></charity-app-production-favorites-button>
     </mat-card-content>
   </mat-card>
