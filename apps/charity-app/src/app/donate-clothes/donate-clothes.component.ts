@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CurrentUserService } from '../utils/current-user.service';
 import { ItemsService } from '../utils/items.service';
 class ImageSnippet {
-  constructor(public src: string, public file: File) {}
+  constructor(public src: string, public file: File) { }
   pending = false;
   status = 'init';
 }
@@ -22,7 +22,7 @@ export class DonateClothesComponent {
     private user: CurrentUserService,
     private itemService: ItemsService,
     private router: Router
-  ) {}
+  ) { }
   selectedFile!: ImageSnippet;
   item: Item = {
     _id: '',
@@ -35,6 +35,7 @@ export class DonateClothesComponent {
     user_owner: '',
   };
   imgUrl = '';
+  err = '';
 
   handleSubmit(form: NgForm) {
     this.item = {
@@ -43,9 +44,18 @@ export class DonateClothesComponent {
       user_owner: this.user.currentUser._id, //ADD user reference Id
       img_url: this.imgUrl,
     };
-    this.itemService.postItem(this.item).subscribe();
-    form.resetForm();
-    this.router.navigate(['thank-you']);
+    this.itemService.postItem(this.item).subscribe(
+      response => {
+        console.log("-------->Success:", response);
+        this.err = '';
+        form.resetForm();
+        this.router.navigate(['thank-you']);
+      },
+      err => {
+        this.err = 'Error: please check if all field are correct',
+          console.log("---->Error:", err);
+      });
+
   }
 
   processFile(image: any) {

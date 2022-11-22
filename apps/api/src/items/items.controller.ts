@@ -1,3 +1,4 @@
+import { validatePrice, sanitizeInputs } from "./items.security.checks";
 import { Item } from '@charity-app-production/api-interfaces';
 import {
   Controller,
@@ -9,15 +10,20 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
+import { throwError } from 'rxjs';
 import { ItemsService } from './items.service';
 
 @Controller('items')
 export class ItemsController {
-  constructor(private readonly itemsService: ItemsService) {}
+  constructor(private readonly itemsService: ItemsService) { }
 
   @Post()
   create(@Body() item: Item) {
     try {
+      /* - Adding validation for price and escaping for all string properties- */
+      validatePrice(item);
+      sanitizeInputs(item);
+      /* -------------------------- */
       return this.itemsService.create(item);
     } catch (error) {
       throw new HttpException(

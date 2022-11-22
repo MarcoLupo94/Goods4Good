@@ -1,33 +1,36 @@
-
-.body{
+.body {
   color: white;
   padding: 2em;
 }
+
 .form {
   display: flex;
   flex-direction: column;
   align-items: center
-
-
 }
+
 .hero {
   display: flex;
   justify-content: center;
 }
-.img-preview-container{
-  margin-left :35%;
+
+.img-preview-container {
+  margin-left: 35%;
   margin-bottom: 1em;
 }
-.image{
+
+.image {
   max-width: 40%;
   max-height: 20%;
-  display:block;
+  display: block;
   border-radius: 5px;
 }
-.submit{
+
+.submit {
   background-color: var(--primary);
   width: 70%;
 }
+
 .file-uploader {
   background-color: var(--primary);
   width: 50%;
@@ -45,36 +48,47 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
 /* MAT FORM CHANGED COLOR */
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-  color: var(--primary)!important;
+  color: var(--primary) !important;
 }
+
 ::ng-deep .mat-input-element {
-  caret-color: white!important;
+  caret-color: white !important;
 }
+
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-  color:white!important;
+  color: white !important;
 }
 
 
 @media screen and (min-width: 480px) {
 
-  .form > mat-form-field {
+  .form>mat-form-field {
     width: 30%;
     height: 20%;
     align-items: center
   }
-  .img-preview-container{
-    margin-left :37%;
+
+  .img-preview-container {
+    margin-left: 37%;
   }
-  .submit{
+
+  .submit {
     width: 40%;
   }
+
   .file-uploader {
     width: 20%;
   }
-  .submit{
+
+  .submit {
     width: 30%;
   }
 }
 
+#error {
+  color: red;
+  text-align: center;
+}

@@ -5,6 +5,7 @@
     <h1>Donate an Item</h1>
   </div>
   <div class="container">
+    <div id="error">{{ err }}</div>
     <form #f="ngForm" class="form" (ngSubmit)="handleSubmit(f)">
       <mat-form-field appearance="outline">
         <mat-label>Item title</mat-label>
@@ -12,67 +13,32 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>£ Price</mat-label>
-        <input
-          matInput
-          type="number"
-          placeholder="0.00"
-          ngModel
-          name="price"
-          required
-        />
+        <input matInput type="number" placeholder="0.00" ngModel name="price" required />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Item size</mat-label>
         <input matInput placeholder="S/M/L" ngModel name="size" required />
       </mat-form-field>
-      <button
-        type="button"
-        mat-raised-button
-        (click)="imageInput.click()"
-        class="file-uploader"
-      >
+      <button type="button" mat-raised-button (click)="imageInput.click()" class="file-uploader">
         <mat-icon>image </mat-icon>
       </button>
 
-      <input
-        hidden
-        class="uploader"
-        #imageInput
-        type="file"
-        accept="image/*"
-        (change)="processFile(imageInput)"
-        required
-      />
+      <input hidden class="uploader" #imageInput type="file" accept="image/*" (change)="processFile(imageInput)"
+        required />
 
       <div *ngIf="selectedFile" class="img-preview-container">
-        <mat-icon
-          *ngIf="selectedFile.status === 'ok'"
-          fontIcon="check_circle"
-        ></mat-icon>
-        <mat-icon
-          *ngIf="selectedFile.status === 'fail'"
-          fontIcon="block"
-        ></mat-icon>
+        <mat-icon *ngIf="selectedFile.status === 'ok'" fontIcon="check_circle"></mat-icon>
+        <mat-icon *ngIf="selectedFile.status === 'fail'" fontIcon="block"></mat-icon>
         <img class="image" src="{{ imgUrl }}" alt="item Image" />
       </div>
 
       <mat-form-field appearance="outline">
         <mat-label>Item informations</mat-label>
-        <textarea
-          matInput
-          placeholder="Description..."
-          ngModel
-          name="description"
-          required
-        ></textarea>
+        <textarea matInput placeholder="Description..." ngModel name="description" required></textarea>
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       </mat-form-field>
-      <button
-        class="submit"
-        mat-button
-        type="submit"
-        [disabled]="!f.valid || selectedFile.status !== 'ok'"
-      >
+      <button class="submit" name="item_submit" mat-button type="submit"
+        [disabled]="!f.valid || selectedFile.status !== 'ok'">
         Donate
       </button>
     </form>

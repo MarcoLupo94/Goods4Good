@@ -106,4 +106,27 @@ describe('Pick a charity and donate clothes', () => {
     cy.wait(1500);
   });
 
+  it('Give error if price is wrong', () => {
+
+    cy.get('input[name=title]').type('Example item...');
+    cy.get('input[name=price]').type('12.3343');
+    cy.get('input[name=size]').type('XXL');
+    cy.get('textarea[name=description]').type('Testing item form with input validation');
+    cy.get('button[name=item_submit]').click();
+    cy.wait(1500);
+
+
+    cy.get('[id=error]').should('have.text', 'Error: please check if all field are correct');
+
+  });
+
+  it('Remove error and submit if price is correct', () => {
+
+    cy.get('input[name=price]').clear();
+    cy.get('input[name=price]').type('12.33');
+    cy.get('button[name=item_submit]').click();
+    cy.get('[id=error]').should('not.exist');
+
+  });
+
 });
