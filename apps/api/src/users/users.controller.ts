@@ -1,4 +1,4 @@
-import { Item, User } from '@charity-app-production/api-interfaces';
+import { Item, User, Favorite } from '@charity-app-production/api-interfaces';
 import {
   Controller,
   Get,
@@ -19,6 +19,11 @@ export class UsersController {
   @Post()
   create(@Body() user: User) {
     return this.usersService.create(user);
+  }
+
+  @Post('favorites')
+  addToFavorites(@Body() body: Favorite) {
+    return this.usersService.addFavorite(body.userId, body.charityId);
   }
 
   // @Get()

@@ -1,0 +1,10 @@
+.favorites-button {
+  transform: scale(1.5);
+  color: var(--primary);
+  transition: all 0.3s;
+}
+
+.favorites-button:hover {
+  background-color: var(--button-background);
+  color: white;
+}

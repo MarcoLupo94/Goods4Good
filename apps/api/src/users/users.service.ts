@@ -78,4 +78,27 @@ export class UsersService {
       console.log(e);
     }
   }
+
+  async addFavorite(userId: string, charityId: string) {
+    try {
+      // Get the current user
+      const user = await (
+        await this.userModel.findById(userId)
+      ).populate('favoriteIds');
+
+      // Check if the charity ID already exists in the favorite IDs array
+      const charityAlreadyFavorite = user.favoriteIds.includes(charityId);
+
+      if (charityAlreadyFavorite) {
+        await user.save();
+        return user;
+      } else {
+        user.favoriteIds.push(charityId);
+        await user.save();
+        return user;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

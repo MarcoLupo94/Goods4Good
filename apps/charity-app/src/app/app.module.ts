@@ -28,6 +28,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { FavoritesButtonComponent } from './Favorites/favorites-button/favorites-button.component';
+import { FavoritesPageComponent } from './Favorites/favorites-page/favorites-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +50,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     NavBarComponent,
     SearchPageComponent,
     ConfirmModalComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    FavoritesButtonComponent,
+    FavoritesPageComponent
   ],
   imports: [
     BrowserModule,
