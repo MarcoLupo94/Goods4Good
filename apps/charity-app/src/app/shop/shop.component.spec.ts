@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 
 import { ShopComponent } from './shop.component';
 
@@ -8,7 +9,7 @@ describe('ShopComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ShopComponent],
+      declarations: [ShopComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ShopComponent);
