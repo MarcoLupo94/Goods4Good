@@ -71,12 +71,27 @@ export class CurrentUserService {
     );
   }
 
-  // Add charity id to favorites
+  // Add charity to favorites
   addToFavorites(favoriteCharity: Charity): Observable<User> {
     return this.http.post<User>(environment.API_DB + 'users/' + 'favorites', {
       userId: this.currentUser._id,
       charityId: favoriteCharity._id,
       charity: favoriteCharity
     });
+  }
+
+  // Remove charity from favorites
+  removeFromFavorites(unfavoriteCharity: Charity): Observable<Charity[]> {
+    return this.http.patch<Charity[]>(
+      environment.API_DB +
+        'users/' +
+        'remove-favorite/' +
+        unfavoriteCharity._id,
+      {
+        userId: this.currentUser._id,
+        charityId: unfavoriteCharity._id,
+        charity: unfavoriteCharity
+      }
+    );
   }
 }

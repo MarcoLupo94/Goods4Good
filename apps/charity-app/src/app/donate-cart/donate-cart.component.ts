@@ -55,7 +55,6 @@ export class DonateCartComponent implements OnInit {
     this.user
       .setUser()
       .then((data) => {
-        console.log(this.user, 'response');
         this.cart = [...data];
         this.setTotalPrice();
       })

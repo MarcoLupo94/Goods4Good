@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CurrentUserService } from '../utils/current-user.service';
 import { Charity } from '@charity-app-production/api-interfaces';
 import { Router } from '@angular/router';
@@ -15,15 +15,33 @@ export class CharityCardComponent {
   @Input()
   charity!: Charity;
 
+  @Output()
+  favoriteCharitiesChanged = new EventEmitter();
+
+  listenFavCharityChangeEvent() {
+    this.favoriteCharitiesChanged.emit(this.user.currentUser.favoriteCharities);
+  }
+
   navigate() {
     this.router.navigate(['charity-page/', this.charity._id]);
   }
   addCharityToFavorites() {
     const favoriteCharity = this.charity;
-    this.user.addToFavorites(favoriteCharity).subscribe((data) => {
-      this.user.currentUser = { ...data };
+
+    if (this.charityIsFavorite) {
+      this.user.removeFromFavorites(favoriteCharity).subscribe((data) => {
+        console.log(data, 'remove favorite result');
+      });
+
+      this.charityIsFavorite = false;
+
+      this.favoriteCharitiesChanged.emit(this.charity._id);
+    } else {
+      this.user.addToFavorites(favoriteCharity).subscribe((data) => {
+        this.user.currentUser = { ...data };
+      });
       this.charityIsFavorite = true;
-    });
+    }
   }
 
   ngOnInit(): void {

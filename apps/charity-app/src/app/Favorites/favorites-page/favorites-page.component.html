@@ -8,6 +8,7 @@
       *ngFor="let charity of favoriteCharities"
       [charity]="charity"
       class="banner"
+      (favoriteCharitiesChanged)="favCharityChangeEvent($event)"
     ></charity-app-production-charity-card>
   </div>
 </div>

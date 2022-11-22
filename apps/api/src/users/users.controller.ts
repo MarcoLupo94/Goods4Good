@@ -89,6 +89,26 @@ export class UsersController {
     }
   }
 
+  @Patch('remove-favorite/:charityId')
+  removeFavorite(@Param('charityId') charityId: string, @Body() body) {
+    try {
+      const { userId } = body;
+
+      return this.usersService.removeFavorite(charityId, userId);
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_MODIFIED,
+          error: 'FAVORITE_NOT_REMOVED',
+        },
+        HttpStatus.NOT_MODIFIED,
+        {
+          cause: error,
+        }
+      );
+    }
+  }
+
   @Delete(':id')
   emptyCart(@Param('id') _id: string) {
     try {
