@@ -1,14 +1,15 @@
-
-.container{
+.container {
   height: 100%;
   color: white;
 }
+
 .message {
   display: flex;
   justify-content: center;
   margin-top: 2em;
 }
-.search{
+
+.search {
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -16,19 +17,22 @@
 
 mat-icon {
   transform: scale(1.7);
-  margin-left : 0.5em;
+  margin-left: 0.5em;
   color: var(--primary);
 
 }
+
 .field {
   max-width: 500px;
   width: 60%;
   height: 80%;
 }
+
 .banner {
   max-height: 400px;
   max-width: 400px;
 }
+
 .banners {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -36,7 +40,7 @@ mat-icon {
   justify-content: center;
   gap: 2em;
   padding-bottom: 2em;
-  height  : 70%;
+  height: 70%;
   padding: 2em;
 
 }
@@ -45,15 +49,26 @@ mat-icon {
 
 
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-  color: var(--primary)!important;
+  color: var(--primary) !important;
   background-color: var(--secondary-background);
 
 }
+
 ::ng-deep .mat-input-element {
 
-  caret-color: white!important;
-}
-::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-  color:white!important;
+  caret-color: white !important;
 }
 
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: white !important;
+}
+
+.category {
+  width: 100px;
+  height: 60px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #151619;
+  color: white;
+  font-size: 18px;
+}

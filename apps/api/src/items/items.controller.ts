@@ -21,10 +21,12 @@ export class ItemsController {
   create(@Body() item: Item) {
     try {
       /* - Adding validation for price and escaping for all string properties- */
+      console.log("Before checks:", item);
       validatePrice(item);
-      sanitizeInputs(item);
+      const safeItem = sanitizeInputs(item);
+      console.log("After checks:", safeItem);
       /* -------------------------- */
-      return this.itemsService.create(item);
+      return this.itemsService.create(safeItem);
     } catch (error) {
       throw new HttpException(
         {

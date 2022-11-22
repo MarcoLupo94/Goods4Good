@@ -2,11 +2,13 @@ import validator from "validator";
 
 //Making sure that each string property is escaped to prevent XSS
 export const sanitizeInputs = (object) => {
-    Object.keys(object).forEach((k) => {
-        if (typeof object[k] === 'string' && k !== 'img_url') {
-            object[k] = validator.escape(object[k]);
+    const sanitized = { ...object };
+    Object.keys(sanitized).forEach((k) => {
+        if (typeof sanitized[k] === 'string' && k !== 'img_url') {
+            sanitized[k] = validator.escape(sanitized[k]);
         }
     })
+    return sanitized;
 }
 
 export const validatePrice = (item) => {
@@ -17,6 +19,6 @@ export const validatePrice = (item) => {
         allow_decimal: true,
         require_decimal: false,
         digits_after_decimal: [0, 1, 2]
-    })) throw 'Price format is not correct';
+    })) throw new Error('Price format is not correct');
 
 }

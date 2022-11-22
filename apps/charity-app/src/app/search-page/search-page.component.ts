@@ -14,6 +14,8 @@ export class SearchPageComponent implements OnInit {
   currentSearch: Charity[] = [];
   user!: User;
   options: string[] = [];
+  categories: string[] = [];
+  currentCat: string = '';
   formValue = '';
   formDisabled = true;
 
@@ -21,11 +23,10 @@ export class SearchPageComponent implements OnInit {
     private api: CharitiesApiService,
     private userService: CurrentUserService,
     private router: Router
-  ) {}
-  checkValidity(event: string) {
+  ) { }
+  checkValidity() {
     this.currentSearch = this.charities.filter((charity) => {
-      if (event === '') return this.charities;
-      return charity.name.toLowerCase().includes(event.toLowerCase());
+      return charity.tags.includes(this.currentCat) && charity.name.toLowerCase().includes(this.formValue.toLowerCase());
     });
   }
   ngOnInit(): void {
@@ -36,6 +37,11 @@ export class SearchPageComponent implements OnInit {
           () => 0.5 - Math.random()
         );
         this.options = this.charities.map((el) => el.name).sort();
+        //Extracting all the available categories/tags from charities to use as filter
+        const allTags = this.charities.map((el) => el.tags).reduce((acc, e) => acc = [...e, ...acc], []);
+        const uniqueTags = new Set([...allTags]);//Romoving duplicates by converting to Set
+        this.categories = Array.from(uniqueTags).sort();//Converting back to array
+        //---------------------------------------------------------------------------
         this.user = this.userService.currentUser;
       })
       .catch((e) => console.log(e));
