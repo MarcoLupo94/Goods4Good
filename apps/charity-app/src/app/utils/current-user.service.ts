@@ -71,14 +71,11 @@ export class CurrentUserService {
     );
   }
 
-  // Add charity to favorites
-  addToFavorites(favoriteCharityId: String): Observable<String> {
-    return this.http.post<String>(
-      environment.API_DB +
-        'users/' +
-        this.currentUser._id +
-        `/${favoriteCharityId}`,
-      favoriteCharityId
-    );
+  // Add charity id to favorites
+  addToFavorites(favoriteCharityId: string): Observable<User> {
+    return this.http.post<User>(environment.API_DB + 'users/' + 'favorites', {
+      userId: this.currentUser._id,
+      charityId: favoriteCharityId
+    });
   }
 }

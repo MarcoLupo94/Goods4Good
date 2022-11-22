@@ -30,6 +30,9 @@ export class user {
 
   @Prop()
   donations: string[];
+
+  @Prop()
+  favoriteIds: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(user);
