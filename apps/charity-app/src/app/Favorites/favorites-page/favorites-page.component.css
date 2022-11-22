@@ -1,3 +1,18 @@
 .white-text {
   color: white;
 }
+
+.banner {
+  max-height: 400px;
+  max-width: 400px;
+}
+.banners {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  padding-bottom: 2em;
+  height: 70%;
+  padding: 2em;
+}

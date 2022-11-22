@@ -23,7 +23,11 @@ export class UsersController {
 
   @Post('favorites')
   addToFavorites(@Body() body: Favorite) {
-    return this.usersService.addFavorite(body.userId, body.charityId);
+    return this.usersService.addFavorite(
+      body.userId,
+      body.charityId,
+      body.charity
+    );
   }
 
   // @Get()

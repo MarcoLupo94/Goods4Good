@@ -19,8 +19,8 @@ export class CharityCardComponent {
     this.router.navigate(['charity-page/', this.charity._id]);
   }
   addCharityToFavorites() {
-    const favoriteCharityId = this.charity._id;
-    this.user.addToFavorites(favoriteCharityId).subscribe((data) => {
+    const favoriteCharity = this.charity;
+    this.user.addToFavorites(favoriteCharity).subscribe((data) => {
       this.user.currentUser = { ...data };
       this.charityIsFavorite = true;
     });
@@ -28,13 +28,15 @@ export class CharityCardComponent {
 
   ngOnInit(): void {
     // Does this charity id match any in the users favorite charity ids array
-    this.user.currentUser.favoriteIds.some((favoriteId) => {
-      if (favoriteId === this.charity._id) {
-        this.charityIsFavorite = true;
-        return true;
-      } else {
-        return false;
-      }
-    });
+    if (this.charity) {
+      this.user.currentUser.favoriteCharities.some((favoriteCharity) => {
+        if (favoriteCharity._id === this.charity._id) {
+          this.charityIsFavorite = true;
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
   }
 }

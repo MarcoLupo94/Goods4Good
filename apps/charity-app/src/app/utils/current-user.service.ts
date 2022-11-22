@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { Item, User } from '@charity-app-production/api-interfaces';
+import { Item, User, Charity } from '@charity-app-production/api-interfaces';
 import { lastValueFrom, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -21,7 +21,7 @@ export class CurrentUserService {
     picture: '',
     cart: [],
     donations: [],
-    favoriteIds: []
+    favoriteCharities: []
   };
   user: any;
 
@@ -72,10 +72,11 @@ export class CurrentUserService {
   }
 
   // Add charity id to favorites
-  addToFavorites(favoriteCharityId: string): Observable<User> {
+  addToFavorites(favoriteCharity: Charity): Observable<User> {
     return this.http.post<User>(environment.API_DB + 'users/' + 'favorites', {
       userId: this.currentUser._id,
-      charityId: favoriteCharityId
+      charityId: favoriteCharity._id,
+      charity: favoriteCharity
     });
   }
 }

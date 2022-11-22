@@ -1,4 +1,4 @@
-import { Item, User } from '@charity-app-production/api-interfaces';
+import { Item, User, Charity } from '@charity-app-production/api-interfaces';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -79,21 +79,29 @@ export class UsersService {
     }
   }
 
-  async addFavorite(userId: string, charityId: string) {
+  async addFavorite(userId: string, charityId: string, charity: Charity) {
     try {
       // Get the current user
       const user = await (
         await this.userModel.findById(userId)
-      ).populate('favoriteIds');
+      ).populate('favoriteCharities');
 
       // Check if the charity ID already exists in the favorite IDs array
-      const charityAlreadyFavorite = user.favoriteIds.includes(charityId);
+      const charityAlreadyFavorite = user.favoriteCharities.some(
+        (favoriteCharity) => {
+          if (favoriteCharity._id === charityId) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      );
       // throw new Error('Test favorite error');
       if (charityAlreadyFavorite) {
         await user.save();
         return user;
       } else {
-        user.favoriteIds.push(charityId);
+        user.favoriteCharities.push(charity);
         await user.save();
         return user;
       }
