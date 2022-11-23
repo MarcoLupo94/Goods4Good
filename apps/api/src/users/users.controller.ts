@@ -96,6 +96,8 @@ export class UsersController {
 
       return this.usersService.removeFavorite(charityId, userId);
     } catch (error) {
+      // console.log(error, 'backend remove error');
+      // return error;
       throw new HttpException(
         {
           status: HttpStatus.NOT_MODIFIED,

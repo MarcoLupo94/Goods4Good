@@ -111,20 +111,6 @@ export class UsersService {
     }
   }
 
-  // async removeFromCart(_id: string, itemId: string) {
-  //   try {
-  //     const user = await this.userModel.findById(_id).populate('cart');
-  //     const indexToRemove = user.cart.indexOf(itemId);
-  //     user.cart.splice(indexToRemove, 1);
-  //     await user.save();
-  //     return await this.itemModel.find({
-  //       _id: { $in: user.cart },
-  //     });
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
-
   async removeFavorite(charityId: string, userId: string) {
     try {
       const user = await this.userModel
@@ -136,11 +122,8 @@ export class UsersService {
       });
       const targetCharityIndex = user.favoriteCharities.indexOf(targetCharity);
 
-      console.log(user.favoriteCharities, 'list of favorite charities');
-
       user.favoriteCharities.splice(targetCharityIndex, 1);
 
-      console.log(user.favoriteCharities, 'new favorite charities list');
       await user.save();
       return user;
     } catch (error) {

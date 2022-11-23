@@ -5,6 +5,8 @@
 .banner {
   max-height: 400px;
   max-width: 400px;
+  align-self: center;
+  justify-self: center;
 }
 .banners {
   display: grid;

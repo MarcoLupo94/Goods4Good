@@ -30,6 +30,7 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { FavoritesButtonComponent } from './Favorites/favorites-button/favorites-button.component';
 import { FavoritesPageComponent } from './Favorites/favorites-page/favorites-page.component';
+import { ErrorModalComponent } from './error-modal/error-modal.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { FavoritesPageComponent } from './Favorites/favorites-page/favorites-pag
     ConfirmModalComponent,
     SpinnerComponent,
     FavoritesButtonComponent,
-    FavoritesPageComponent
+    FavoritesPageComponent,
+    ErrorModalComponent
   ],
   imports: [
     BrowserModule,

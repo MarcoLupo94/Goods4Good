@@ -46,3 +46,11 @@ export interface Donation {
   charity: Charity;
   owner: User;
 }
+
+export interface ErrorInfo {
+  errorName: string;
+  errorMessage: string;
+  errorUrl: string;
+  errorStatusCode: number;
+  userMessage: string;
+}
