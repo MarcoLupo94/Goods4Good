@@ -3,26 +3,29 @@ import { Injectable } from '@angular/core';
 import { Charity } from '@charity-app-production/api-interfaces';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorModalComponent } from '../error-modal/error-modal.component';
 @Injectable({
   providedIn: 'root'
 })
 export class CharitiesApiService {
   db: Charity[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public dialog: MatDialog) {
     this.getData().subscribe(
       (data) => {
         this.db = [...data];
       },
       (error) => {
-        const errorInfo = {
-          errorName: error.name,
-          errorMessage: error.message,
-          errorUrl: error.url,
-          userMessage: `⛔ Application could not connect to the server ⛔`
-        };
-        console.log(errorInfo, 'error event (charities service)');
-        // Emit this info when the error event occurs
+        this.dialog.open(ErrorModalComponent, {
+          data: {
+            errorName: error.name,
+            errorMessage: error.message,
+            errorUrl: error.url,
+            errorStatusCode: error.status,
+            userMessage: '⛔ Application could not connect to the server ⛔'
+          }
+        });
       }
     );
   }
