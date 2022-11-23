@@ -6,10 +6,13 @@ import { Observable } from 'rxjs/internal/Observable';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ItemsService {
-  constructor(private http: HttpClient, private HttpClientModule: HttpClientModule) { }
+  constructor(
+    private http: HttpClient,
+    private HttpClientModule: HttpClientModule
+  ) {}
 
   postItem(item: Item): Observable<Item> {
     return this.http.post<Item>(environment.API_DB + 'items', item);
