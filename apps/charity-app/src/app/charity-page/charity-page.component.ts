@@ -2,11 +2,12 @@ import { APP_ID, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Charity } from '@charity-app-production/api-interfaces';
 import { CharitiesApiService } from '../utils/charities-api.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'charity-app-production-charity-page',
   templateUrl: './charity-page.component.html',
-  styleUrls: ['./charity-page.component.css'],
+  styleUrls: ['./charity-page.component.css']
 })
 export class CharityPageComponent implements OnInit {
   charity: Charity | undefined;
