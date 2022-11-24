@@ -17,7 +17,6 @@ export class FavoritesPageComponent implements OnInit {
   favoriteCharities: Charity[] = [];
 
   favCharityChangeEvent(event: any) {
-    console.log(event);
     const filteredFavCharities = this.favoriteCharities.filter(
       (favoriteCharity) => {
         if (favoriteCharity._id !== event) {
@@ -28,7 +27,6 @@ export class FavoritesPageComponent implements OnInit {
       }
     );
     this.favoriteCharities = filteredFavCharities;
-    console.log(this.favoriteCharities);
   }
 
   ngOnInit(): void {
