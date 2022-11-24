@@ -37,7 +37,8 @@ export class CharityCardComponent {
     if (this.charityIsFavorite) {
       this.user.removeFromFavorites(favoriteCharity).subscribe(
         (data) => {
-          console.log(data, 'remove favorite result');
+          this.charityIsFavorite = false;
+          this.listenFavCharityChangeEvent();
         },
         (error) => {
           this.dialog.open(ErrorModalComponent, {
@@ -51,11 +52,12 @@ export class CharityCardComponent {
           });
         }
       );
-      this.charityIsFavorite = false;
     } else {
       this.user.addToFavorites(favoriteCharity).subscribe(
         (data) => {
           this.user.currentUser = { ...data };
+          this.charityIsFavorite = true;
+          this.listenFavCharityChangeEvent();
         },
         (error) => {
           this.dialog.open(ErrorModalComponent, {
@@ -69,7 +71,6 @@ export class CharityCardComponent {
           });
         }
       );
-      this.charityIsFavorite = true;
     }
   }
 

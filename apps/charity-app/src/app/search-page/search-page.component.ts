@@ -7,7 +7,7 @@ import { CurrentUserService } from '../utils/current-user.service';
 @Component({
   selector: 'charity-app-production-search-page',
   templateUrl: './search-page.component.html',
-  styleUrls: ['./search-page.component.css'],
+  styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
   charities: Charity[] = [];
@@ -23,10 +23,13 @@ export class SearchPageComponent implements OnInit {
     private api: CharitiesApiService,
     private userService: CurrentUserService,
     private router: Router
-  ) { }
+  ) {}
   checkValidity() {
     this.currentSearch = this.charities.filter((charity) => {
-      return charity.tags.includes(this.currentCat) && charity.name.toLowerCase().includes(this.formValue.toLowerCase());
+      return (
+        charity.tags.includes(this.currentCat) &&
+        charity.name.toLowerCase().includes(this.formValue.toLowerCase())
+      );
     });
   }
   ngOnInit(): void {
@@ -38,12 +41,18 @@ export class SearchPageComponent implements OnInit {
         );
         this.options = this.charities.map((el) => el.name).sort();
         //Extracting all the available categories/tags from charities to use as filter
-        const allTags = this.charities.map((el) => el.tags).reduce((acc, e) => acc = [...e, ...acc], []);
-        const uniqueTags = new Set([...allTags]);//Romoving duplicates by converting to Set
-        this.categories = Array.from(uniqueTags).sort();//Converting back to array
+        const allTags = this.charities
+          .map((el) => el.tags)
+          .reduce((acc, e) => (acc = [...e, ...acc]), []);
+        const uniqueTags = new Set([...allTags]); //Romoving duplicates by converting to Set
+        this.categories = Array.from(uniqueTags).sort(); //Converting back to array
         //---------------------------------------------------------------------------
         this.user = this.userService.currentUser;
       })
       .catch((e) => console.log(e));
   }
 }
+
+// looping over charities twice
+// map and reduce have been used together - reduce will do what map does as well
+// 1 single reduce over this.api.db (don't modify)
