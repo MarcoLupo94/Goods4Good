@@ -47,8 +47,7 @@ Except for the regular suspects; git, Node, npm, you need these things to work o
 3. In the 2 environments folders ````apps/api/src/environments/```` & ````apps/charity-app/src/environments/``` create two different files called environment.ts.
 
 4. Populate these 2 files with the right keys by following this file pattern:
-   ```bash
-  ```   
+5.  ```   
   export const environment = {
   production: false,
   STRIPE_KEY:
