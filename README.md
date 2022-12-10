@@ -18,8 +18,8 @@ Goods4Good is a fully responsive web application that helps people finding chari
 
 <p align="center">
   <img src="images/mobile.png" />
-  <img src="images/mobile(1).png" />
-  <img src="images/mobile(2).png" />
+  <img src="images/mobile (1).png" />
+  <img src="images/mobile (2).png" />
 </p>
 
 
