@@ -47,24 +47,22 @@ Except for the regular suspects; git, Node, npm, you need these things to work o
 3. In the 2 environments folders ````apps/api/src/environments/```` & ````apps/charity-app/src/environments/``` create two different files called environment.ts.
 
 4. Populate these 2 files with the right keys by following this file pattern:
-5. ```bash   
+ ```
   export const environment = {
   production: false,
-  STRIPE_KEY:
-    'Stripe API public key',
-  STRIPE_SECRET:
-    'Stripe API Test key',
+  STRIPE_KEY:'Stripe API public key',
+  STRIPE_SECRET:'Stripe API Test key',
   API_DB: 'http://localhost:3333/api/',
   AUTH_CLIENTID: '',
   AUTH_DOMAIN: '',
-  MONGO_DB:
-    'Mongo Atlas or MongoDb connection link',
+  MONGO_DB:'Mongo Atlas or MongoDb connection link',
   CLIENT_URL: 'http://localhost:4200/',
   LOGO: 'https://images-charity-app.s3.eu-west-1.amazonaws.com/Goods+4+Good+(2).jpg',
   Access_Key_ID_aws: 'AWS Access key ID',
   Secret_Access_Key_aws: 'AWS Secret key ',
   AWS_S3_BUCKET: 'name of aws bucket'
-};```
+};
+```
 
 
 5. While in the root folder, run ````npm run start```` will build the JS bundle for your app.
