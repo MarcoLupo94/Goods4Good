@@ -35,7 +35,7 @@ Except for the regular suspects; git, Node, npm, you need these things to work o
 
    ```bash
    git clone https://github.com/MarcoLupo94/Goods4Good.git
-   cd trash-walk-frontend
+   cd goods4good
    ```
 
 2. Install dependencies.
@@ -46,8 +46,7 @@ Except for the regular suspects; git, Node, npm, you need these things to work o
 
 3. In the 2 environments folders ````apps/api/src/environments/```` & ````apps/charity-app/src/environments/``` create two different files called environment.ts.
 
-4. Populate these 2 files with the right keys by following this file pattern:
-5.  ```bash   
+4. Populate these 2 files with the right keys by following this file pattern:```bash   
   export const environment = {
   production: false,
   STRIPE_KEY:
