@@ -40,14 +40,15 @@ Except for the regular suspects; git, Node, npm, you need these things to work o
 
 2. Install dependencies.
 
+
    ```bash
    npm install
    ```
 
-3. In the 2 environments folders ````apps/api/src/environments/```` & ````apps/charity-app/src/environments/``` create two different files called environment.ts.
+3. In the 2 environments folders ````apps/api/src/environments/```` & ````apps/charity-app/src/environments/```` create two different files called environment.ts.
 
 4. Populate these 2 files with the right keys by following this file pattern:
- ```
+ ````
   export const environment = {
   production: false,
   STRIPE_KEY:'Stripe API public key',
